@@ -63,7 +63,7 @@ class domePage extends Component {
           <Menu.Item key="5">用户展示</Menu.Item>
         </SubMenu>
         <SubMenu
-          key="sub4"
+          key="sub3"
           title={
             <span>
               <Icon type="setting" />
@@ -76,7 +76,7 @@ class domePage extends Component {
         </SubMenu>
 
         <SubMenu
-          key="sub2"
+          key="sub4"
           title={
             <span>
               <Icon type="appstore" />
@@ -91,7 +91,7 @@ class domePage extends Component {
        
       
         <SubMenu
-          key="sub4"
+          key="sub5"
           title={
             <span>
               <Icon type="setting" />
