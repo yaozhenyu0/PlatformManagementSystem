@@ -1,23 +1,23 @@
-// import React from 'react';
 import { connect } from 'dva';
-import styles from './IndexPage.css';
-import 'antd/dist/antd.css';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import React, { Component } from 'react'
+import 'antd/dist/antd.css';
+import styles from './index.css';
 
-class IndexPage extends Component {
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.form.validateFields((err, values) => {
-      if (!err) {
-        console.log('Received values of form: ', values);
-      }
-    });
-  };
-  render() {
-    const { getFieldDecorator } = this.props.form;
-    return (
-      <div className={styles.wrap_y}>
+class LoginPage extends Component {
+    componentDidMount(){
+        let {login} = this.props;
+        login({
+            user_name: 'chenmanjie',
+            user_pwd: 'Chenmanjie123!'
+        });
+    }
+    
+    render(){
+        const { getFieldDecorator } = this.props.form;
+
+        return(
+            <div className={styles.wrap_y}>
         <div className={styles.operation_y}>
           <Form onSubmit={this.handleSubmit} className="login-form" className={styles.inp_y}>
             <Form.Item>{
@@ -55,23 +55,36 @@ class IndexPage extends Component {
           </Form>
         </div>
       </div>
-    );
-  }
+        )
+        
+    }
+    handleSubmit = e => {
+        e.preventDefault();
+        this.props.form.validateFields((err, values) => {
+        if (!err) {
+            console.log('Received values of form: ', values);
+        }
+        });
+    };
 }
 
-// function onChange(e) {
-//   console.log(`checked = ${e.target.checked}`);
-// }
 
-// ReactDOM.render(<Checkbox onChange={onChange}>Checkbox</Checkbox>, mountNode);
+const mapStateToProps = state =>{
+    console.log('state...',state);
+    return {}
+}
+const mapDisaptchToProps = dispatch =>{
+    return {
+        login(payload){
+            dispatch({
+                type:'user/login',
+                payload
+            })
+        }
+    }
+}
 
-
-// const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLoginForm);
-
-IndexPage.propTypes = {
+LoginPage.propTypes = {
 };
 
-export default connect()(Form.create({})(IndexPage));
-
-
-
+export default connect(mapStateToProps,mapDisaptchToProps)(Form.create({})(LoginPage))
