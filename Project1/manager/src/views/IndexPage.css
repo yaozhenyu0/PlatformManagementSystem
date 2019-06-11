@@ -1,29 +1,57 @@
-
-.normal {
-  font-family: Georgia, sans-serif;
-  margin-top: 3em;
-  text-align: center;
-}
-
-.title {
-  font-size: 2.5rem;
-  font-weight: normal;
-  letter-spacing: -1px;
-}
-
-.welcome {
-  height: 328px;
-  background: url(../assets/yay.jpg) no-repeat center 0;
-  background-size: 388px 328px;
-}
-
-.list {
-  font-size: 1.2em;
-  margin-top: 1.8em;
+*{
+  padding: 0;
+  margin: 0;
   list-style: none;
-  line-height: 1.5em;
+  text-decoration: none;
+  outline: none;
 }
 
-.list code {
-  background: #f7f7f7;
+#root{
+  width: 100%;
+  height: 100%;
+  /* background-image: url(../assets/48530566.jpeg) */
+}
+.wrap_y{
+  width: 100%;
+  height: 100%;
+  background: url(/public/spa/static/media/login_wraper.8ab0d297.jpg) navy;
+}
+.operation_y{
+  width: 400px;
+  height: 270px;
+  border: 1px solid #333;
+  background: #fff;
+  border-radius: 4px;
+  position: absolute;
+  top: 25%;
+  right: 15%;
+}
+.inp_y{
+  width: 90%;
+  height: 150px;
+  margin-left: 5% !important;
+  display: flex;
+  flex-direction: column;
+}
+.inp_ant1_y{
+  margin-top: 20px !important;
+}
+.pwd_y{
+  display: flex !important;
+  justify-content: space-between;
+}
+.btn_y{
+  /* width: 90%;
+  margin-left: 5%; */
+  /* background: orangered !important; */
+  height: 40px !important;
+}
+#components-form-demo-normal-login .login-form {
+  max-width: 300px;
+}
+#components-form-demo-normal-login .login-form-forgot {
+  float: right;
+}
+#components-form-demo-normal-login .login-form-button {
+  width: 100%;
 }
