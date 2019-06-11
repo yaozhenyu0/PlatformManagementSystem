@@ -47,7 +47,6 @@ class IndexPage extends Component {
       </div>
     );
   }
-
 }
 
 // function onChange(e) {
