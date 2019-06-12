@@ -1,5 +1,5 @@
 import { connect } from 'dva';
-import styles from './domePage.css';
+import styles from './Index.css';
 import React,{Component} from 'react';
 import 'antd/dist/antd.css';
 import { Menu, Icon,Layout  } from 'antd';
@@ -25,11 +25,11 @@ class domePage extends Component {
 
   render() {
     return (<div>
-        <div className={styles.header}>
-              {/* <Header>Header</Header> */}
-        </div>
-      <Layout className={styles.box}>
-      <Sider className={styles.slider}>
+            <div className={styles.header}></div>
+      <Layout>
+        <div className={styles.box}>
+        <div className={styles.select}>
+      <Sider>
       <Menu
         mode="inline"
         openKeys={this.state.openKeys}
@@ -103,9 +103,11 @@ class domePage extends Component {
         </SubMenu>
       </Menu>
       </Sider>
-        
+      </div>
+      <div>
         <Content>Content</Content>
-     
+        </div>
+        </div>
     </Layout>
     </div>
     );

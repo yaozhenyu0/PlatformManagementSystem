@@ -6,25 +6,29 @@ import 'antd/dist/antd.css';
 import React,{Component,useEffect} from 'react';
 
 function IndexPage(props){
- // 判断是否登陆
- useEffect(()=>{
-  if (props.isLogin === 1){
-    // 1.提示登陆成功
-    message.success('登陆成功');
-    // 2.存储cookie
-    // 3.跳转主页面
-    console.log('props.history', props.history);
-    let pathName = decodeURIComponent(props.history.location.search.split('=')[1]);
-    props.history.replace(pathName);
-  }else if(props.isLogin === -1){
-    // 登陆失败
-    message.error('用户名或密码错误')
-  }
-}, [props.isLogin]);
+  useEffect(()=>{
+    if (props.isLogin === 1){
+      console.log(props)
+      // 1.提示登陆成功
+      message.success('登陆成功');
+      // 2.存储cookie
+      // 3.跳转主页面
+      console.log('props.history', props.history);
+      // let pathName = decodeURIComponent(props.history.location.search.split('=')[1]);
+      // console.log(pathName)
+      // props.history.replace(pathName);
+       props.history.replace("/main");
+    }else if(props.isLogin === -1){
+      // 登陆失败
+      message.error('用户名或密码错误')
+    }
+  }, [props.isLogin]);
+
 
  let handleSubmit = e => {
     e.preventDefault();
    props.form.validateFields((err, values) => {
+     console.log(values)
       if (!err) {
         //调登录接口
         props.login({
@@ -55,7 +59,7 @@ function IndexPage(props){
         <Form.Item>
           {getFieldDecorator('password', {
             validateTrigger:'onBlur',
-            rules: [{ pattern: /^[A-z]\w{5,11}$/, message: '密码格式有误!' }],
+            rules: [{ pattern: /^(?:(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9])).*$/, message: '密码格式有误!' }],
           })(
             <Input
               prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -88,6 +92,7 @@ IndexPage.propTypes = {
 };
 
 const mapStateToProps=state=>{
+  console.log(state)
   return{
     ...state.user
   }
