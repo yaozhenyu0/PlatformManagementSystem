@@ -1,28 +1,46 @@
 
 import { connect } from 'dva';
-import styles from './IndexPage.scss';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import styles from './Index.scss';
+import { Form, Icon, Input, Button, Checkbox,message } from 'antd';
 import 'antd/dist/antd.css';
-import { createPublicKey } from 'crypto';
-import React,{Component} from 'react';
-import { Script } from 'vm';
+import React,{Component,useEffect} from 'react';
 
-class IndexPage extends React.Component {
-  handleSubmit = e => {
+function IndexPage(props){
+ // 判断是否登陆
+ useEffect(()=>{
+  if (props.isLogin === 1){
+    // 1.提示登陆成功
+    message.success('登陆成功');
+    // 2.存储cookie
+    // 3.跳转主页面
+    console.log('props.history', props.history);
+    let pathName = decodeURIComponent(props.history.location.search.split('=')[1]);
+    props.history.replace(pathName);
+  }else if(props.isLogin === -1){
+    // 登陆失败
+    message.error('用户名或密码错误')
+  }
+}, [props.isLogin]);
+
+ let handleSubmit = e => {
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
+   props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        //调登录接口
+        props.login({
+          user_name:values.username,
+          user_pwd:values.password
+        })
       }
     });
   };
 
-  render() {
-    const { getFieldDecorator } = this.props.form;
+  // render() {
+    const { getFieldDecorator } =props.form;
     return (
       <div className={styles.box}>
       <div className={styles.wrap}>
-      <Form onSubmit={this.handleSubmit} className="login-form">
+      <Form onSubmit={handleSubmit} className="login-form">
         <Form.Item>
           {getFieldDecorator('username', {
             validateTrigger:'onBlur',
@@ -63,9 +81,25 @@ class IndexPage extends React.Component {
       </div> 
     );
   }
-}
+// }
+//props的默认值
 IndexPage.propTypes = {
   
 };
 
-export default connect()(Form.create()(IndexPage));
+const mapStateToProps=state=>{
+  return{
+    ...state.user
+  }
+}
+const mapDispatchToProps=dispatch=>{
+  return{
+    login(payload){
+      dispatch({
+        type:'user/login',
+        payload
+      })
+    }
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Form.create()(IndexPage));
