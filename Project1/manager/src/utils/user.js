@@ -8,5 +8,5 @@ export function getToken() {
 
 //设置token
 export function setToken(value) {
-    Cookie.set(key, value, { expires: 0 })
+    Cookie.set(key, value, { expires: 1 })
 }

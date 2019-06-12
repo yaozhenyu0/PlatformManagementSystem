@@ -5,7 +5,6 @@ import React, { useEffect } from 'react'
 import styles from './index.css';
 
 function LoginPage(props) {
-
     let { login } = props;
     //判断是否登录
     useEffect(() => {
@@ -15,8 +14,9 @@ function LoginPage(props) {
             //本地存储
 
             //跳转主页面
-            console.log(props.history)
+            console.log(props)
             let pathname = decodeURIComponent(props.history.location.search.split('=')[1]);
+            console.log(pathname)
             props.history.replace(pathname)
         } else if (props.isLogin === -1) {
             //登录失败
@@ -100,7 +100,7 @@ LoginPage.defaultProps = {
 
 const mapStateToProps = state => {
     console.log('state...', state);
-    return {}
+    return { ...state.user }
 }
 const mapDisaptchToProps = dispatch => {
     return {

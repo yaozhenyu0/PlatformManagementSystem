@@ -29,7 +29,7 @@ export default {
                     if (getToken()) {
                         //利用redux做路由跳转
                         dispatch(routerRedux.replace({
-                            pathname: '/'
+                            pathname: '/questions/Add'
                         }))
                     }
                 }
@@ -48,7 +48,7 @@ export default {
             }
             yield put({
                 type: 'updataLogin',
-                payload: data.code === 1 ? 1 : -1
+                isLogin: data.code === 1 ? 1 : -1
             })
         },
 
@@ -57,7 +57,8 @@ export default {
     //同步操作
     reducers: {
         updataLogin(state, action) {
-            return { ...state, ...action.payload }
+            console.log(action)
+            return { ...state, isLogin: action.isLogin }
         },
     },
 }

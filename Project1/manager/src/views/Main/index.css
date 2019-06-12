@@ -1,3 +1,28 @@
 .container{
   height: 100%;
+  background: #333;
+}
+.top_y{
+    width: 100%;
+    height: 78px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border-bottom: 1px solid #333;
+}
+.img_left_y{
+    width: 220px;
+    height: auto;
+    margin-left: 20px;
+}
+.img_right_y{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 60px;
+}
+.img{
+    width: 100px;
+    height: 40px;
 }
