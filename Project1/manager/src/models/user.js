@@ -1,15 +1,39 @@
-import { login } from '../services'
+import { login } from '@/services'
+import { setToken, getToken } from '@/utils/user';
+import { routerRedux } from 'dva/router';
+import Main from '../views/Main/index'
 
 export default {
     //命名空间
     namespace: 'user',
 
     //模块内部的状态
-    state: {},
+    state: {
+        isLogin: 0
+    },
 
+    //订阅路由跳转
     subscriptions: {
         setup({ dispatch, history }) {  //eslint-disable-line
-
+            return history.listen(({ pathname }) => {
+                if (pathname.indexOf('/login') === -1) {
+                    //不去登录页面做token检测
+                    if (!getToken()) {
+                        //利用redux做路由跳转
+                        dispatch(routerRedux.replace({
+                            pathname: `/login?redirect=${encodeURIComponent(pathname)}`
+                        }))
+                    }
+                } else {
+                    //去登录页面，如果已登录跳回首页
+                    if (getToken()) {
+                        //利用redux做路由跳转
+                        dispatch(routerRedux.replace({
+                            pathname: '/'
+                        }))
+                    }
+                }
+            })
         },
     },
 
@@ -17,18 +41,27 @@ export default {
     effects: {
         *login({ payload }, { call, put }) {
             console.log('payload....', payload, login);
-            let data = yield call(login);
+            let data = yield call(login, payload);
             console.log('data...', data);
+            if (data.code === 1) {
+                setToken(data.token)
+            }
+            yield put({
+                type: 'updataLogin',
+                payload: data.code === 1 ? 1 : -1
+            })
         },
-        *fatch({ payload }, { call, put }) { //eslint-disablie-line
-            yield put({ type: 'save' });
-        },
+
     },
 
     //同步操作
     reducers: {
-        save(state, action) {
+        updataLogin(state, action) {
             return { ...state, ...action.payload }
         },
     },
 }
+
+
+
+
