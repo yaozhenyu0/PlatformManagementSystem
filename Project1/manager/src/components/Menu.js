@@ -28,7 +28,7 @@ function MenuComp() {
                     <Link to="/questions/Classify">试题分类</Link>
                 </Menu.Item>
                 <Menu.Item key="3">
-                    <Link to="/questions/Eaxm">查看试题</Link>
+                    <Link to="/questions/Exam">查看试题</Link>
                 </Menu.Item>
 
             </SubMenu>

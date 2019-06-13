@@ -15,9 +15,10 @@ function LoginPage(props) {
 
             //跳转主页面
             console.log(props)
-            let pathname = decodeURIComponent(props.history.location.search.split('=')[1]);
-            console.log(pathname)
-            props.history.replace(pathname)
+            let pathName = decodeURIComponent(props.history.location.search.split('=')[1]);
+            props.history.replace(pathName || '/');
+            console.log(pathName)
+            // props.history.replace(pathname)
         } else if (props.isLogin === -1) {
             //登录失败
             message.error('用户名或密码不正确')
@@ -109,6 +110,7 @@ const mapDisaptchToProps = dispatch => {
                 type: 'user/login',
                 payload
             })
+            console.log(payload)
         }
     }
 }

@@ -8,3 +8,67 @@ export function login(params) {
     data: params
   });
 }
+
+//考试类型(add)
+export function Add() {
+  return request({
+    url: '/exam/examType',
+    method: 'GET'
+  });
+}
+
+//课程类型(add)
+export function Protion() {
+  return request({
+    url: '/exam/subject',
+    method: 'GET'
+  });
+}
+
+//试题类型(add)
+export function ProtionType() {
+  return request({
+    url: '/exam/getQuestionsType',
+    method: 'GET'
+  });
+}
+
+//试题分类(classify)
+export function Question() {
+  return request({
+    url: '/exam/getQuestionsType',
+    method: 'GET'
+  });
+}
+
+//所有课程类型(exam)
+export function Protionexam() {
+  return request({
+    url: '/exam/subject',
+    method: 'GET'
+  });
+}
+
+//试题类型(exam)
+export function Protionexamtype() {
+  return request({
+    url: '/exam/examType',
+    method: 'GET'
+  });
+}
+
+//试题分类(exam)
+export function Protionexamclass() {
+  return request({
+    url: '/exam/getQuestionsType',
+    method: 'GET'
+  });
+}
+
+//试题分类(exam)
+export function ProtionAll() {
+  return request({
+    url: '/exam/questions/new',
+    method: 'GET'
+  });
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout } from 'antd';
-import { Router, Route, Switch, BrowserRouter } from 'dva/router';
+import { Router, Redirect, Route, Switch, BrowserRouter } from 'dva/router';
 import Menu from '../../components/Menu';
 import styles from './index.css'
 import './index.css'
@@ -9,7 +9,7 @@ import Classify from '../Home/Questions/classify';
 import Exam from '../Home/Questions/exam';
 
 const { Header, Content, Sider } = Layout;
-console.log(Add)
+// console.log(Add)
 function IndexPage(props) {
     return <Layout className={styles.container}>
         <div className={styles.top_y}>
@@ -24,9 +24,10 @@ function IndexPage(props) {
             <Content>
 
                 <Switch>
-                    <Route path='/qusetions/Add' component={Add}></Route>
-                    <Route path='/qusetions/Classify' component={null}></Route>
-                    <Route path='/qusetions/Exam' component={null}></Route>
+                    <Redirect exact from="/" to="/questions/Add" />
+                    <Route path='/questions/Add' component={Add}></Route>
+                    <Route path='/questions/Classify' component={Classify}></Route>
+                    <Route path='/questions/Exam' component={Exam}></Route>
                 </Switch>
 
 
