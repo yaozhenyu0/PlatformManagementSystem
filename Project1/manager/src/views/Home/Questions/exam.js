@@ -39,10 +39,8 @@ function Exam(props) {
                                     <Radio.Button value="a">{item.subject_text}</Radio.Button>
                                 </Radio.Group>
                             </div>
-
                         })
                     }
-
                 </div>
                 <div className={styles.bottom_select_y}>
                     <div className={styles.bottom_select_left_examType_y}>
@@ -56,8 +54,6 @@ function Exam(props) {
                                 }
                             </Select>
                         </div>
-
-
                     </div>
                     <div className={styles.bottom_select_right_questionType_y}>
                         <div className={styles.bottom_select_left_y}>题目类型：</div>
@@ -116,7 +112,6 @@ const mapDisaptchToProps = dispatch => {
                 type: 'exam/questions'
             })
         }
-
     }
 }
 export default connect(mapStateToProps, mapDisaptchToProps)(Exam)

@@ -7,7 +7,6 @@ import './add.scss';
 import { connect } from 'dva';
 // import { Divider } from 'antd';
 
-
 class Add extends Component {
     constructor() {
         super()
@@ -25,16 +24,11 @@ class Add extends Component {
         }
     }
     componentDidMount() {
-        // console.log(this.props)
         this.props.questions()
         this.props.protion()
         this.props.protiontype()
         this.props.userof()
-
         let eate = JSON.parse(window.localStorage.str)
-        this.setState({
-
-        })
     }
     componentWillReceiveProps(newProps) {
         // console.log(newProps)
@@ -52,14 +46,11 @@ class Add extends Component {
     }
     handleSubmit = e => {
         e.preventDefault();
-        // console.log(this.props)
         this.props.form.validateFields((err, values) => {
             let params = values
             if (!err) {
-                // console.log(values)
                 values.user_id = this.state.user_id
                 this.props.addLists(params)
-                // console.log(params)
             }
         })
     }
@@ -69,8 +60,7 @@ class Add extends Component {
         // Select选择器
         const { Option } = Select;
 
-        console.log(this.props.form.setFieldsValue)
-
+        // console.log(this.props.form.setFieldsValue)
         let eate = JSON.parse(window.localStorage.str)
         console.log(eate)
         let { addlist, protion, protiontype } = this.state
@@ -169,7 +159,6 @@ class Add extends Component {
     }
 }
 const mapStateToProps = state => {
-    // console.log('state...', state);
     return { ...state.add }
 }
 const mapDisaptchToProps = dispatch => {
