@@ -33,6 +33,15 @@ export function ProtionType() {
   });
 }
 
+//添加试题(add)
+export function addTrys() {
+  return request({
+    url: '/exam/questions',
+    method: 'POST',
+    // data: params
+  });
+}
+
 //试题分类(classify)
 export function Question() {
   return request({

@@ -152,4 +152,8 @@
           background: #fff;
           color: #333;
       }
+      .ant-radio-button-wrapper:not(:first-child)::before {
+          content:"";
+          opacity: 0;
+    }
   }
