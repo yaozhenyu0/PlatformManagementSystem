@@ -1,39 +1,36 @@
-import {Add} from '../services/index'
+import { Question } from '@/services'
 
 export default {
-    // 命名空间
-    namespace: 'classify',
-  
-    // 模块内部的状态
-    state: {},
-  
-    // subscriptions: {
-    //   setup({ dispatch, history }) {  // eslint-disable-line
-    //   },
-    // },
-  
+    //命名空间
+    namespace: 'questtion',
+
+    //模块内部的状态
+    state: {
+        isLogin: 0,
+        data: []
+    },
+
     // 异步操作
     effects: {
-    //   *fetch({ payload }, { call, put }) {  // eslint-disable-line
-    //     yield put({ type: 'save' });
-    //   },
-      *questions({ payload }, { call, put}){
-        console.log(33)
-          let data=yield call(Add)
-          console.log(data)
-        yield put({type:'clss',cldata:data.data})
-      }
+        *quests({ payload }, { call, put }) {
+            let data = yield call(Question)
+            console.log(data)
+            yield put({
+                type: 'save',
+                data: data
+            })
+        },
     },
-  
+
     // 同步操作
     reducers: {
-      save(state, action) {
-        return { ...state, ...action.payload };
-      },
-      clss(state,action){
-        return { ...state, data:action.cldata };
-      }
+        save(state, payload) {
+            console.log(payload.data.data)
+            return { ...state, data: payload.data.data };
+        },
     },
-  
-  };
-  
+}
+
+
+
+

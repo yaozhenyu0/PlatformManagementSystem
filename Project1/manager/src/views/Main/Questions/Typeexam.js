@@ -54,8 +54,17 @@ const rowSelection = {
     }),
 };
 class Typeexam extends Component {
-
+    constructor(){
+        super()
+        this.state={
+            value:'',
+            arrtype:[],
+            select1:[],
+            statearr:[]
+        }
+    }
     state = { visible: false };
+    
 
     showModal = () => {
         this.setState({
@@ -83,16 +92,37 @@ class Typeexam extends Component {
                
                 <h4 style={{padding:'28px 25px',fontSize:'18px'}}>试题分类</h4>
                 <div style={{width:'100%',height:'300px',marginLeft:'20px'}}>
-                <Button type="primary">+ 添加类型</Button>
+                <div>
+        <Button type="primary" onClick={this.showModal}>
+          添加类型
+        </Button>
+        <Modal
+          title="Modal"
+          visible={this.state.visible}
+          onOk={this.hideModal}
+          onCancel={this.hideModal}
+          okText="确认"
+          cancelText="取消"
+        >
+          <p>Bla bla ...</p>
+          <p>Bla bla ...</p>
+          <p>Bla bla ...</p>
+        </Modal>
+      </div>
                 <Table columns={columns} dataSource={data} size="middle" />
                 </div>
             </div>
         );
     }
     componentDidMount(){
-        console.log(this.props)
-        this.props.examTypes()
-    } 
+        this.props.Test()
+    }
+    componentWillReceiveProps(newProps){
+        console.log(newProps)
+        this.setState({
+            statearr:newProps.data
+        })
+    }
 }
 
 const mapStateToProps = state => {
@@ -102,9 +132,9 @@ const mapStateToProps = state => {
   
   const mapDisaptchToProps = dispatch => {
     return {
-    examTypes() {
+        Test() {
         dispatch({
-          type: '/type/examTypes',
+          type: '/classify/questions',
         })
       }
     }

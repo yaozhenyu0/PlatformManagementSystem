@@ -15,22 +15,18 @@ constructor(){
         statearr:[]
     }
 }
-    state = {
-        value: '',
-        value1: '',
-        select1:["周考一","周考二","周考三","月考"]
-    }
+    
     componentDidMount(){
         this.props.examTypes()
     }
     componentWillReceiveProps(newProps){
+        console.log(newProps.data)
         this.setState({
             statearr:newProps.data
         })
     }
     render() {
         let { value, value1,select1,statearr} = this.state
-        console.log(statearr)
         return (
             <div className="content">
                 <h4 style={{padding:'28px 25px',fontSize:'18px'}}>添加试题</h4>
@@ -67,9 +63,6 @@ constructor(){
     handleChange=(value)=>{
         console.log(`selected ${value}`);
     }
-    componentDidMount(){
-        this.props.examTypes()
-    } 
 }
 const mapStateToProps = state => {
     console.log(state)

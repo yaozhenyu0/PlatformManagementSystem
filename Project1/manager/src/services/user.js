@@ -1,33 +1,90 @@
 import request from '../utils/request';
 
-// 登陆接口
-export function login(params){
+//登陆接口
+export function login(params) {
   return request({
     url: '/user/login',
     method: 'POST',
     data: params
-  })
+  });
 }
 
-// 考试类型接口（add）
-export function Add(){
+//考试类型(add)
+export function Add() {
   return request({
-    url: '/exam/examType'
-  })
+    url: '/exam/examType',
+    method: 'GET'
+  });
 }
 
-// // 试题分类接口
-// export function getQuestionsType(){
-//   return request({
-//     url: '/exam/getQuestionsType',
-//     method: 'POST'
-//   })
-// }
+//课程类型(add)
+export function Protion() {
+  return request({
+    url: '/exam/subject',
+    method: 'GET'
+  });
+}
 
-// //查看试题接口
-// export function getQuestionsType(){
-//   return request({
-//     url: '/exam/questions/condition',
-//     method: 'POST'
-//   })
-// }
+//试题类型(add)
+export function ProtionType() {
+  return request({
+    url: '/exam/getQuestionsType',
+    method: 'GET'
+  });
+}
+
+//添加试题(add)
+export function addTrys() {
+  return request({
+    url: '/exam/questions',
+    method: 'POST',
+    // data: params
+  });
+}
+
+//试题分类(classify)
+export function Question() {
+  return request({
+    url: '/exam/getQuestionsType',
+    method: 'GET'
+  });
+}
+
+//所有课程类型(exam)
+export function Protionexam() {
+  return request({
+    url: '/exam/subject',
+    method: 'GET'
+  });
+}
+
+//试题类型(exam)
+export function Protionexamtype() {
+  return request({
+    url: '/exam/examType',
+    method: 'GET'
+  });
+}
+
+//试题分类(exam)
+export function Protionexamclass() {
+  return request({
+    url: '/exam/getQuestionsType',
+    method: 'GET'
+  });
+}
+
+//试题分类(exam)
+export function ProtionAll() {
+  return request({
+    url: '/exam/questions/new',
+    method: 'GET'
+  });
+}
+//查看试题接口()
+export function Look() {
+  return request({
+    url: '/exam/questions/condition',
+    method: 'GET'
+  });
+}
