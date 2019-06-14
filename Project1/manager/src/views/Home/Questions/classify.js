@@ -1,45 +1,110 @@
-
-import { Row, Col, Button } from 'antd';
+import React, { Component } from 'react';
+import styles from './classify.scss'
+import { Button, Input, Modal, Row, Col } from 'antd'
 import { connect } from 'dva';
-import './classify.scss';
-import styles from './classify.scss';
-import React, { useEffect } from 'react'
-// import { getToken, setToken } from '../../../utils/user'
 
-
-function Classify(props) {
-    let { quest } = props
-    useEffect(function () {
+class Classify extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            visible: false,
+            value: '',
+            num: 0,
+            list: []
+        }
+    }
+    handleCancel = e => {
+        this.setState({
+            visible: false
+        })
+    };
+    typeAdd = () => {
+        this.setState({
+            visible: true
+        })
+    };
+    handleOk = e => {
+        let { examadd } = this.props;
+        console.log(this.state.value)
+        examadd({ text: this.state.value, sort: Math.floor(Math.random() * 100) })
+        this.setState({
+            visible: false
+        })
+    };
+    componentDidMount() {
+        let { quest } = this.props
         quest()
-    }, [])
-
-    return (
-        <div className={styles.wrap_y}>
-            <div className={styles.classify_y}>试题分类</div>
-            <div className={styles.content_y}>
-                <div className={styles.btn_y}><Button type="primary" icon="plus">添加类型</Button></div>
-                <div className={styles.content_top_y}>
-                    <Row>
-                        <Col span={8}>类型ID</Col>
-                        <Col span={8}>类型名称</Col>
-                        <Col span={8}>操作</Col>
-                    </Row>
+    }
+    componentWillReceiveProps(newProps) {
+        console.log(newProps)
+        this.setState({
+            list: newProps.questtion.data
+        })
+    }
+    render() {
+        const columns = [
+            {
+                key: 1,
+                id: 1,
+                title: '类型ID',
+                dataIndex: 'questions_type_id',
+            },
+            {
+                key: 2,
+                id: 2,
+                title: '类型名称',
+                dataIndex: 'questions_type_text',
+            },
+            {
+                key: 3,
+                id: 3,
+                title: '操作',
+                dataIndex: "",
+            },
+        ];
+        return (
+            <div className={styles.wrap}>
+                <p className={styles.title}>试题分类</p>
+                <div className={styles.bottom}>
+                    <div>
+                        <Button type="primary" onClick={this.typeAdd} icon="plus" size="large">
+                            添加类型
+                        </Button>
+                        <Modal
+                            title="创建新类型"
+                            visible={this.state.visible}
+                            onOk={this.handleOk}
+                            onCancel={this.handleCancel}
+                        >
+                            <Input placeholder="请输入类型名称" value={this.state.value}
+                                onChange={(e) => { this.setState({ value: e.target.value }) }}
+                            />
+                        </Modal>
+                    </div>
+                    <div className={styles.content_top_y}>
+                        <Row>
+                            <Col span={8}>类型ID</Col>
+                            <Col span={8}>类型名称</Col>
+                            <Col span={8}>操作</Col>
+                        </Row>
+                    </div>
+                    {
+                        this.state.list.map((item, index) => {
+                            return < div key={index} className={styles.conice_y} >
+                                <Row>
+                                    <Col span={8}>{item.questions_type_id}</Col>
+                                    <Col span={8}>{item.questions_type_text}</Col>
+                                    <Col span={8}>{item.questions_type_sort}</Col>
+                                </Row>
+                            </div>
+                        })
+                    }
                 </div>
-                {
-                    props.questtion.data.map((item, index) => {
-                        return < div key={index} className={styles.conice_y} >
-                            <Row>
-                                <Col span={8}>{item.questions_type_id}</Col>
-                                <Col span={8}>{item.questions_type_text}</Col>
-                                <Col span={8}>{item.questions_type_sort}</Col>
-                            </Row>
-                        </div>
-                    })
-                }
             </div>
-        </div>
-    )
+        )
+    }
 }
+
 const mapStateToProps = state => {
     console.log(state)
     return { ...state }
@@ -50,6 +115,10 @@ const mapDisaptchToProps = dispatch => {
             dispatch({
                 type: 'questtion/quests'
             })
+        },
+        examadd(payload) {
+            console.log(payload)
+            dispatch({ type: 'questtion/questions', payload })
         }
 
     }

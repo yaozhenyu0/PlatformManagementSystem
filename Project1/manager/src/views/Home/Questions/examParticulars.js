@@ -1,68 +1,22 @@
 import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
-import styles from './add.scss';
-import { Input, Select, Button, Form } from 'antd';
+import styles from './classify.scss'
+// import { Button, Input, Modal, Row, Col } from 'antd'
 import Editor from 'for-editor';
-import './add.scss';
+import { Input, Select, Button, Form } from 'antd';
 import { connect } from 'dva';
-// import { Divider } from 'antd';
 
-
-class Add extends Component {
-    constructor() {
+class Classify extends Component {
+    constructor(props) {
         super()
         this.state = {
-            valueTheme: '', //题目主题
-            addlist: [],  //
-            protion: [],
-            protiontype: [],
-            addTry: [],
-            valueAnswer: "",  // 答案信息
-            value: '',  //题目
-            user_id: 0,
-            addtrys: "",
-
+            obj: {}
         }
-        // console.log(this.state.value)
     }
     componentDidMount() {
-        // console.log(this.props)
-        this.props.questions()
-        this.props.protion()
-        this.props.protiontype()
-        this.props.userof()
-
-        let eate = JSON.parse(window.localStorage.str)
         this.setState({
-
+            obj: window.localStorage.str
         })
-    }
-    componentWillReceiveProps(newProps) {
-        // console.log(newProps)
-        this.setState({
-            //考试类型
-            addlist: newProps.addlist,
-            //课程类型
-            protion: newProps.protions,
-            //  试题类型
-            protiontype: newProps.protiontypes,
-            //用户id
-            user_id: newProps.userofs,
-            addtrys: newProps.addtrys
-        })
-    }
-    handleSubmit = e => {
-        e.preventDefault();
-        // console.log(this.props)
-        this.props.form.validateFields((err, values) => {
-            let params = values
-            if (!err) {
-                // console.log(values)
-                values.user_id = this.state.user_id
-                this.props.addLists(params)
-                // console.log(params)
-            }
-        })
+        console.log(JSON.parse(window.localStorage.str))
     }
     render() {
         // 代码选择器
@@ -70,15 +24,11 @@ class Add extends Component {
         // Select选择器
         const { Option } = Select;
 
-        console.log(this.props.form.setFieldsValue)
-
-        let eate = JSON.parse(window.localStorage.str)
-        console.log(eate)
-        let { addlist, protion, protiontype } = this.state
+        let { addlist, protion, protiontype, valueTheme, valueAnswer } = this.state
         return (
-            <div className={styles.wrap_y}>
+            <div className={styles.wrap_y}>111
                 <div className={styles.wrap_right_y}>
-                    <div className={styles.test_y}>{eate.title ? "更改试题" : "添加试题"}</div>
+                    <div className={styles.test_y}>添加试题</div>
                     <div className={styles.topic_y}>
                         <Form onSubmit={this.handleSubmit} className="login-form" className={styles.inp_y}>
                             <div className={styles.title_y}>题目信息</div>
@@ -169,53 +119,15 @@ class Add extends Component {
         )
     }
 }
+
 const mapStateToProps = state => {
-    // console.log('state...', state);
-    return { ...state.add }
+    console.log(state)
+    return { ...state }
 }
 const mapDisaptchToProps = dispatch => {
     return {
-        //考试类型
-        questions() {
-            dispatch({
-                //命名空间+异步操作名字
-                type: 'add/questions',
 
-            })
-        },
-        //课程类型
-        protion() {
-            dispatch({
-                //命名空间+异步操作名字
-                type: 'add/protion',
-
-            })
-        },
-        //试题类型
-        protiontype() {
-            dispatch({
-                //命名空间+异步操作名字
-                type: 'add/protiontype',
-
-            })
-        },
-        //添加试题
-        addLists(payload) {
-            dispatch({
-                //命名空间+异步操作名字
-                type: 'add/questionsadd',
-                payload
-            })
-        },
-        //当前用户信息
-        userof() {
-            dispatch({
-                //命名空间+异步操作名字
-                type: 'add/userof',
-
-            })
-        },
 
     }
 }
-export default connect(mapStateToProps, mapDisaptchToProps)(Form.create()(Add))
+export default connect(mapStateToProps, mapDisaptchToProps)(Form.create()(Classify))

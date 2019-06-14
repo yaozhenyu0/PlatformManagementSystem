@@ -36,15 +36,15 @@ export default {
             return { ...state, data: payload.data.data };
         },
         Protionexamtype(state, action) {
-            console.log(action.Protionexamtype)
+            // console.log(action.Protionexamtype)
             return { ...state, Protionexamtype: action.Protionexamtype.data };
         },
         Protionexamclass(state, action) {
-            console.log(action.Protionexamclass)
+            // console.log(action.Protionexamclass)
             return { ...state, Protionexamclass: action.Protionexamclass.data };
         },
         ProtionAll(state, action) {
-            console.log(action.ProtionAll.data)
+            // console.log(action.ProtionAll.data)
             return { ...state, ProtionAll: action.ProtionAll.data };
         },
     },

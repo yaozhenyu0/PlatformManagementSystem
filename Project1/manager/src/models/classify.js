@@ -1,4 +1,5 @@
 import { Question } from '@/services'
+import { QuestionAll } from '@/services'
 
 export default {
     //命名空间
@@ -20,6 +21,14 @@ export default {
                 data: data
             })
         },
+        *questions({ payload }, { call, put }) {
+            let data = yield call(QuestionAll, payload)
+            console.log(data)
+            // yield put({
+            //     type: 'saveadd',
+            //     data: data
+            // })
+        },
     },
 
     // 同步操作
@@ -27,6 +36,10 @@ export default {
         save(state, payload) {
             console.log(payload.data.data)
             return { ...state, data: payload.data.data };
+        },
+        saveadd(state, payload) {
+            // console.log(payload.data.data)
+            // return { ...state, data: payload.data.data };
         },
     },
 }

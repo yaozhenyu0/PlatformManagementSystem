@@ -34,11 +34,11 @@ export function ProtionType() {
 }
 
 //添加试题(add)
-export function addTrys() {
+export function addTrys(params) {
   return request({
     url: '/exam/questions',
     method: 'POST',
-    // data: params
+    data: params
   });
 }
 
@@ -78,6 +78,22 @@ export function Protionexamclass() {
 export function ProtionAll() {
   return request({
     url: '/exam/questions/new',
+    method: 'GET'
+  });
+}
+
+//获取当前用户信息 (add)/exam/insertQuestionsType
+export function UserOf() {
+  return request({
+    url: 'user/userInfo',
+    method: 'GET'
+  });
+}
+
+//添加试题类型 (classify)
+export function QuestionAll(params) {
+  return request({
+    url: `/exam/insertQuestionsType?text=${params.text}&sort=${params.sort}`,
     method: 'GET'
   });
 }
