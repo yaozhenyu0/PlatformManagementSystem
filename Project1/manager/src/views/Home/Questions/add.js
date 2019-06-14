@@ -73,7 +73,6 @@ class Add extends Component {
                                 })}
                             </Select>
                         </div>
-
                         <div className={styles.select_box_y}>
                             <div>请选择课程类型</div>
                             <Select className={styles.select_y} defaultValue="类型选择" style={{ width: 180 }} onChange={this.handleChange}>
@@ -82,7 +81,6 @@ class Add extends Component {
                                 })}
                             </Select>
                         </div>
-
                         <div className={styles.select_box_y}>
                             <div>请选择题目类型</div>
                             <Select className={styles.select_y} defaultValue="类型选择" style={{ width: 180 }} onChange={this.handleChange}>
@@ -91,8 +89,6 @@ class Add extends Component {
                                 })}
                             </Select>
                         </div>
-
-
                         <div className={styles.message_y}>答案信息</div>
                         <Editor height='auto' value={value} onChange={this.handleChange.bind(this)} />
                         <Button className={styles.btn_y} type="primary">提交</Button>
