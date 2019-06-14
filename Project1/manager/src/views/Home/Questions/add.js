@@ -23,7 +23,6 @@ class Add extends Component {
             addtrys: "",
 
         }
-        // console.log(this.state.value)
     }
     componentDidMount() {
         // console.log(this.props)
