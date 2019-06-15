@@ -18,8 +18,6 @@ export default {
         //考试类型
         *questions({ payload }, { call, put }) {
             let data = yield call(Add)
-            // console.log(payload)
-            // console.log(addtryes)
             yield put({ type: 'addS', addlist: data.data })
         },
         //试题类型

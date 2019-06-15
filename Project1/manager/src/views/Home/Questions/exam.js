@@ -76,7 +76,7 @@ function Exam(props) {
                 {
                     props.exam.ProtionAll && props.exam.ProtionAll.map((item, index) => {
                         // console.log(item)
-                        return <div className={styles.content_every_y} key={index}>
+                        return <div className={styles.content_every_y} key={index} onClick={() => { detalis(item) }}>
                             <div className={styles.content_every_top_y}>{item.title}</div>
                             <div className={styles.content_every_cont_y}>
                                 <div className={styles.content_every_cont_left_y}>
@@ -93,11 +93,17 @@ function Exam(props) {
             </div>
         </div>
     )
+    function detalis(item) {
+        // console.log(111)
+        window.localStorage.tre = JSON.stringify(item)
+        props.history.push('examDetalis')
+        // console.log(props)
+    }
 
     function compiles(item) {
         // console.log(item)
         window.localStorage.str = JSON.stringify(item)
-        props.history.push('add')
+        props.history.push('examParticulars')
         // console.log(props)
     }
 }

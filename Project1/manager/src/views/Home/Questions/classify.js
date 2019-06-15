@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './classify.scss'
 import { Button, Input, Modal, Row, Col } from 'antd'
 import { connect } from 'dva';
+import './classify.scss'
 
 class Classify extends Component {
     constructor(props) {

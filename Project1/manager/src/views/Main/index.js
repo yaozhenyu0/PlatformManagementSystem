@@ -8,6 +8,7 @@ import Add from '../Home/Questions/add';
 import Classify from '../Home/Questions/classify';
 import Exam from '../Home/Questions/exam';
 import Particulars from '../Home/Questions/examParticulars';
+import Detalis from '../Home/Questions/examDetalis';
 
 const { Content, Sider } = Layout;
 // console.log(Add)
@@ -30,6 +31,7 @@ function IndexPage(props) {
                     <Route path='/questions/Classify' component={Classify}></Route>
                     <Route path='/questions/Exam' component={Exam}></Route>
                     <Route path='/questions/examParticulars' component={Particulars}></Route>
+                    <Route path='/questions/examDetalis' component={Detalis}></Route>
                 </Switch>
 
 

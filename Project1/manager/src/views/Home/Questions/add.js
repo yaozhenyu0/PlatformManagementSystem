@@ -28,7 +28,7 @@ class Add extends Component {
         this.props.protion()
         this.props.protiontype()
         this.props.userof()
-        let eate = JSON.parse(window.localStorage.str)
+        // let eate = JSON.parse(window.localStorage.str)
     }
     componentWillReceiveProps(newProps) {
         // console.log(newProps)
@@ -61,13 +61,12 @@ class Add extends Component {
         const { Option } = Select;
 
         // console.log(this.props.form.setFieldsValue)
-        let eate = JSON.parse(window.localStorage.str)
-        console.log(eate)
+        // let eate = JSON.parse(window.localStorage.str)
         let { addlist, protion, protiontype } = this.state
         return (
             <div className={styles.wrap_y}>
                 <div className={styles.wrap_right_y}>
-                    <div className={styles.test_y}>{eate.title ? "更改试题" : "添加试题"}</div>
+                    <div className={styles.test_y}>添加试题</div>
                     <div className={styles.topic_y}>
                         <Form onSubmit={this.handleSubmit} className="login-form" className={styles.inp_y}>
                             <div className={styles.title_y}>题目信息</div>
