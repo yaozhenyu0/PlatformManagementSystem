@@ -35,7 +35,6 @@ export default {
             yield put({ type: 'inquirese', data: data })
         },
     },
-
     // 同步操作
     reducers: {
         exame(state, payload) {
