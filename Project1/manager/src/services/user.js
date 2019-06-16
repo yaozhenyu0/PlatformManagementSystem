@@ -97,3 +97,11 @@ export function QuestionAll(params) {
     method: 'GET'
   });
 }
+//查询接口(exam)
+export function inQuires(values) {
+  return request({
+    url: `/exam/questions/condition`,
+    method: 'GET',
+    values
+  });
+}

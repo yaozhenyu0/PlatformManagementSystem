@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './classify.scss'
 import { Button, Input, Modal, Row, Col } from 'antd'
 import { connect } from 'dva';
-import './classify.scss'
+// import './classify.scss'
 
 class Classify extends Component {
     constructor(props) {
@@ -43,32 +43,12 @@ class Classify extends Component {
         })
     }
     render() {
-        const columns = [
-            {
-                key: 1,
-                id: 1,
-                title: '类型ID',
-                dataIndex: 'questions_type_id',
-            },
-            {
-                key: 2,
-                id: 2,
-                title: '类型名称',
-                dataIndex: 'questions_type_text',
-            },
-            {
-                key: 3,
-                id: 3,
-                title: '操作',
-                dataIndex: "",
-            },
-        ];
         return (
-            <div className={styles.wrap}>
-                <p className={styles.title}>试题分类</p>
-                <div className={styles.bottom}>
+            <div className={styles.wrap_y}>
+                <p className={styles.title_y}>试题分类</p>
+                <div className={styles.bottom_y}>
                     <div>
-                        <Button type="primary" onClick={this.typeAdd} icon="plus" size="large">
+                        <Button className={styles.addBtn_y} type="primary" onClick={this.typeAdd} icon="plus" size="large">
                             添加类型
                         </Button>
                         <Modal

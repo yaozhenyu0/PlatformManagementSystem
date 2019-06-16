@@ -1,6 +1,17 @@
 .wrap_y{
     width: 100%;
     height: auto;
+}
+.title_y{
+    font-size: 25px;
+    margin: 30px 3%;
+    font-weight: 800;
+}
+.bottom_y{
+    width: 94%;
+    height: auto;
+    margin-left: 3%;
+    border-radius: 4px;
     background: #f0f2f5;
 }
 .content_y{
@@ -8,15 +19,18 @@
     height: auto;
     padding: 15px 0;
     margin-left: 2%;
-    background: #fff;
+    // background: #fff;
     border-radius: 4px;
+}
+.addBtn_y{
+    margin: 30px 0 0 20px;
 }
 .content_top_y{
     width: 96%;
     height: 50px;
     margin-left: 2%;
     line-height: 50px;
-    background: #f0f0f0;
+    // background: #f0f0f0;
 }
 .conice_y{
     width: 96%;
@@ -43,5 +57,8 @@
     }
     .ant-col-8{
         text-indent: 3rem;
+    }
+    .classify__addBtn_y___1rwpY{
+        margin: 30px 0 0 20px;
     }
 }

@@ -10,18 +10,95 @@
 .exam_y{
     font-size: 26px;
     margin: 30px 0 30px 3%;
-    font-weight: 800;
+}
+.wrap_con_y{
+    width: 94%;
+    height: auto;
+    display: flex;
+    margin-left: 3%;
 }
 .wrap_con_master_y{
     font-size: 14px;
     font-weight: 800;
-    margin: 0 3%;
+    margin: 26px 3%;
+    font-size: 16px;
+}
+.wrap_con_messages_y{
+    font-size: 16px;
+    margin: 0 0 26px 3%;
+}
+.wrap_con_messages_detalis_y{
+    display: flex;
+}
+// 左
+    .wrap_con_messages_a_y{
+        padding: 0 6px;
+        background: #e6f7ff;
+        border: 1px solid #91d5ff;
+        color: #1890ff;
+        line-height: 29px;
+        font-size: 12px;
+        margin-left: 3%;
+    }
+    // 中
+    .wrap_con_messages_b_y{
+        padding: 0 6px;
+        background: #f0f5ff;
+        border: 1px solid #adc6ff;
+        color: #2f54eb;
+        margin: 0 10px;
+        line-height: 29px;
+        font-size: 12px;
+    }
+    //右
+    .wrap_con_messages_c_y{
+        padding: 0 6px;
+        background: #fff7e6;
+        border: 1px solid #ffd591;
+        color: #fa8c16;
+        line-height: 29px;
+        font-size: 12px;
+    }
+    .wrap_con_name_y{
+        font-size: 16px;
+        margin: 26px 3%;
+    }
+    .wrap_con_content_y{
+        width: 94%;
+        margin-left: 3%;    
+        color: rgba(0, 0, 0, 0.65);
+        margin: 1.5rem;
+    }
+    .wrap_con_content_dats_y{
+        width: 94%;
+        margin-left: 3%;
+    }
+    .wrap_con_answerHints_y{
+        font-size: 16px;
+        margin: 26px 3%;
+    }
+
+
+
+
+
+
+.wrap_con_left_y{
+    width: 54.6%;
+    margin-right: 2%;
+    background: #fff;
+    border-radius: 6px;
+}
+.wrap_con_right_y{
+    flex: 1;
+    background: #fff;
+    border-radius: 6px;
 }
 
 :global{
     .ant-layout-content{
         width: 100%;
         height: 100%;
-        background: #c9c9c9;
+        background: #f0f2f5;
     }
 }

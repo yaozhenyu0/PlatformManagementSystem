@@ -1,9 +1,9 @@
-import { Radio, Select, Button } from 'antd';
+import { Radio, Input, Select, Button, Form } from 'antd';
 import { connect } from 'dva';
 import './exam.scss';
 import styles from './exam.scss';
 import React, { useEffect } from 'react'
-import { compile } from 'handlebars';
+// import { compile } from 'handlebars';
 
 function Exam(props) {
     let { examquest } = props
@@ -14,72 +14,108 @@ function Exam(props) {
     // 课程类型
     // console.log(props.arr)
     // 考试类型
+
     const { Option } = Select;
-
-    function handleChange(value) {
-
-    }
-    function btn() {
-        // console.log()
+    let handleSubmit = e => {
+        e.preventDefault();
+        props.form.validateFields((err, values) => {
+            console.log(values)
+            if (!err) {
+                props.inquires(values)
+            }
+        })
     }
     //内容
     // const { Header, Footer, Sider, Content } = Layout;
+
+    const { getFieldDecorator } = props.form;
     return (
         <div className={styles.wrap_y}>
 
             <div className={styles.exam_y}>查看试题</div>
             <div className={styles.top_y}>
-                <div className={styles.top_select_y}>
-                    <div className={styles.top_select_left_y}>课程类型:</div>
-                    {
-                        // console.log(props)
-                        props.exam.data.map((item, index) => {
-                            return <div className={styles.top_select_right_y} key={index}>
-                                <Radio.Group defaultValue="a" buttonStyle="solid">
-                                    <Radio.Button value="a">{item.subject_text}</Radio.Button>
-                                </Radio.Group>
+                <Form onSubmit={handleSubmit} className="login-form" className={styles.inp_y}>
+                    <div className={styles.top_select_y}>
+                        <div className={styles.top_select_left_y}>课程类型:</div>
+                        <div className={styles.top_select_right_y}>
+                            <Form.Item>
+                                {
+                                    getFieldDecorator('subject_id', {
+                                    })(
+                                        <Radio.Group initialvalue="a" buttonStyle="solid">
+                                            {
+                                                props.exam.data.map((item, index) => {
+                                                    return <Radio.Button key={index} value={item.subject_id}>{item.subject_text}</Radio.Button>
+
+                                                })
+                                            }
+                                        </Radio.Group>
+                                    )
+                                }
+                            </Form.Item>
+                        </div>
+
+
+                    </div>
+                    <div className={styles.bottom_select_y}>
+                        <div className={styles.bottom_select_left_examType_y}>
+                            <div className={styles.bottom_select_left_y}>考试类型：</div>
+                            <div className={styles.bottom_select_right_y}>
+
+                                <Form.Item>
+                                    {
+                                        getFieldDecorator('exam_id', {
+                                        })(
+                                            <Select style={{ width: 180 }} >
+                                                {
+                                                    props.exam.Protionexamtype && props.exam.Protionexamtype.map((item, index) => (
+                                                        <Option value={item.exam_id} key={index}>{item.exam_name}</Option>
+                                                    ))
+                                                }
+                                            </Select>
+                                        )
+                                    }
+                                </Form.Item>
+
                             </div>
-                        })
-                    }
-                </div>
-                <div className={styles.bottom_select_y}>
-                    <div className={styles.bottom_select_left_examType_y}>
-                        <div className={styles.bottom_select_left_y}>考试类型：</div>
-                        <div className={styles.bottom_select_right_y}>
-                            <Select defaultValue="" style={{ width: 120 }} onChange={handleChange}>
-                                {
-                                    props.exam.Protionexamtype && props.exam.Protionexamtype.map((item, index) => (
-                                        <Option key={index} value={item.exam_id}>{item.exam_name}</Option>
-                                    ))
-                                }
-                            </Select>
                         </div>
-                    </div>
-                    <div className={styles.bottom_select_right_questionType_y}>
-                        <div className={styles.bottom_select_left_y}>题目类型：</div>
-                        <div className={styles.bottom_select_right_y}>
-                            <Select defaultValue="" style={{ width: 120 }} onChange={handleChange}>
-                                {
-                                    props.exam.Protionexamclass && props.exam.Protionexamclass.map((item, index) => (
-                                        < Option key={index} value={item.questions_type_id} > {item.questions_type_text}</Option>
-                                    ))
-                                }
-                            </Select>
+                        <div className={styles.bottom_select_right_questionType_y}>
+                            <div className={styles.bottom_select_left_y}>题目类型：</div>
+                            <div className={styles.bottom_select_right_y}>
+
+
+                                <Form.Item>
+                                    {
+                                        getFieldDecorator('questions_type_id', {
+                                        })(
+                                            <Select style={{ width: 180 }} >
+                                                {
+                                                    props.exam.Protionexamclass && props.exam.Protionexamclass.map((item, index) => (
+                                                        <Option value={item.questions_type_id} key={index}>{item.questions_type_text}</Option>
+
+                                                    ))
+                                                }
+                                            </Select>
+                                        )
+                                    }
+                                </Form.Item>
+                            </div>
                         </div>
+                        <div className={styles.bottom_select_right_questionType_y}>
+                            <Button className={styles.bottom_select_right_questionType_btn_y} htmlType="submit" type="primary" icon="search">查询</Button>
+                        </div>
+
                     </div>
-                    <div className={styles.bottom_select_right_questionType_y}>
-                        <Button className={styles.bottom_select_right_questionType_btn_y} onClick={() => { btn() }} type="primary" icon="search">查询</Button>
-                    </div>
-                </div>
+                </Form>
             </div>
             <div className={styles.content_y}>
                 {
                     props.exam.ProtionAll && props.exam.ProtionAll.map((item, index) => {
                         // console.log(item)
-                        return <div className={styles.content_every_y} key={index} onClick={() => { detalis(item) }}>
+                        return <div className={styles.content_every_y} key={index}>
                             <div className={styles.content_every_top_y}>{item.title}</div>
                             <div className={styles.content_every_cont_y}>
-                                <div className={styles.content_every_cont_left_y}>
+                                <div className={styles.content_every_cont_left_y} onClick={() => { detalis(item) }}>
                                     <div className={styles.content_every_cont_left_left_y}>{item.questions_type_text}</div>
                                     <div className={styles.content_every_cont_left_center_y}>{item.subject_text}</div>
                                     <div className={styles.content_every_cont_left_right_y}>{item.exam_name}</div>
@@ -94,7 +130,7 @@ function Exam(props) {
         </div>
     )
     function detalis(item) {
-        // console.log(111)
+        console.log(detalis)
         window.localStorage.tre = JSON.stringify(item)
         props.history.push('examDetalis')
         // console.log(props)
@@ -117,7 +153,14 @@ const mapDisaptchToProps = dispatch => {
             dispatch({
                 type: 'exam/questions'
             })
+        },
+        //查询
+        inquires(values) {
+            dispatch({
+                type: 'exam/inquire',
+                values
+            })
         }
     }
 }
-export default connect(mapStateToProps, mapDisaptchToProps)(Exam)
+export default connect(mapStateToProps, mapDisaptchToProps)(Form.create()(Exam))
