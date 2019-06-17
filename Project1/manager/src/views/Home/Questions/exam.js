@@ -9,10 +9,9 @@ function Exam(props) {
     let { examquest } = props
     useEffect(function () {
         examquest()
-        let arr = []
     }, [])
     // 课程类型
-    // console.log(props.arr)
+    console.log(props)
     // 考试类型
 
     const { Option } = Select;

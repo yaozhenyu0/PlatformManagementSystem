@@ -9,6 +9,8 @@ import Classify from '../Home/Questions/classify';
 import Exam from '../Home/Questions/exam';
 import Particulars from '../Home/Questions/examParticulars';
 import Detalis from '../Home/Questions/examDetalis';
+// import AddUesr from '../Home/UserManagement/addUesr';
+import UserDisplay from '../Home/UserManagement/userDisplay';
 
 const { Content, Sider } = Layout;
 // console.log(Add)
@@ -26,15 +28,23 @@ function IndexPage(props) {
             <Content>
 
                 <Switch>
+                    {/* 添加试题 */}
                     <Redirect exact from="/" to="/questions/Add" />
+                    {/* 添加试题分类 */}
                     <Route path='/questions/Add' component={Add}></Route>
+                    {/* 试题分类 */}
                     <Route path='/questions/Classify' component={Classify}></Route>
+                    {/* 查看试题 */}
                     <Route path='/questions/Exam' component={Exam}></Route>
+                    {/* 修改试题跳转 */}
                     <Route path='/questions/examParticulars' component={Particulars}></Route>
+                    {/* 详情跳转 */}
                     <Route path='/questions/examDetalis' component={Detalis}></Route>
+                    {/* 添加用户 */}
+                    {/* <Route path='/UserManagement/addUesr' component={AddUesr}></Route> */}
+                    {/* 用户展示 */}
+                    <Route path='/UserManagement/userDisplay' component={UserDisplay}></Route>
                 </Switch>
-
-
             </Content>
         </Layout>
 
