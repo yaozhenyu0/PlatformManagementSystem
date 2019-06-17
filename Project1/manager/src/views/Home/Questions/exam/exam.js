@@ -1,43 +1,29 @@
-import { Radio, Select, Button, Layout } from 'antd';
+import { Radio, Select, Button } from 'antd';
 import { connect } from 'dva';
 import './exam.scss';
 import styles from './exam.scss';
-import React, { useEffect,useState } from 'react'
-const { Header, Footer, Sider, Content } = Layout;
+import React, { useEffect } from 'react'
+import { compile } from 'handlebars';
 
 function Exam(props) {
-    let { examquest,look } = props
-    
-    let [val,setval]=useState('')
-    let [val2,setval2]=useState('')
+    let { examquest } = props
     useEffect(function () {
         examquest()
-        look()
+        let arr = []
     }, [])
-    
     // 课程类型
-    function onChange(e) {
-        // console.log(`radio checked:${e.target.value}`);
-    }
-
+    // console.log(props.arr)
     // 考试类型
     const { Option } = Select;
 
-    function handleChange(value) {//select考试类型  
-        setval(value)
+    function handleChange(value) {
+
     }
-    function handleChanges(value) {//select 题目类型
-        setval2(value)
-    }
-    function Testtype(value){
-// console.log(value)
-    }
-    function handleQuery(){     //点击查询
-        console.log(val,val2)
-        props.look(`?exam_id=${val}&questions_type_id=${val2}`)
-        
+    function btn() {
+        // console.log()
     }
     //内容
+    // const { Header, Footer, Sider, Content } = Layout;
     return (
         <div className={styles.wrap_y}>
 
@@ -50,13 +36,11 @@ function Exam(props) {
                         props.exam.data.map((item, index) => {
                             return <div className={styles.top_select_right_y} key={index}>
                                 <Radio.Group defaultValue="a" buttonStyle="solid">
-                                    <Radio.Button value={item.subject_id} onClick={Testtype(item.subject_id)}>{item.subject_text}</Radio.Button>
+                                    <Radio.Button value="a">{item.subject_text}</Radio.Button>
                                 </Radio.Group>
                             </div>
-
                         })
                     }
-
                 </div>
                 <div className={styles.bottom_select_y}>
                     <div className={styles.bottom_select_left_examType_y}>
@@ -70,13 +54,11 @@ function Exam(props) {
                                 }
                             </Select>
                         </div>
-
-
                     </div>
                     <div className={styles.bottom_select_right_questionType_y}>
                         <div className={styles.bottom_select_left_y}>题目类型：</div>
                         <div className={styles.bottom_select_right_y}>
-                            <Select defaultValue="" style={{ width: 120 }} onChange={handleChanges}>
+                            <Select defaultValue="" style={{ width: 120 }} onChange={handleChange}>
                                 {
                                     props.exam.Protionexamclass && props.exam.Protionexamclass.map((item, index) => (
                                         < Option key={index} value={item.questions_type_id} > {item.questions_type_text}</Option>
@@ -86,7 +68,7 @@ function Exam(props) {
                         </div>
                     </div>
                     <div className={styles.bottom_select_right_questionType_y}>
-                        <Button className={styles.bottom_select_right_questionType_btn_y} type="primary" icon="search" onClick={handleQuery}>查询</Button>
+                        <Button className={styles.bottom_select_right_questionType_btn_y} onClick={() => { btn() }} type="primary" icon="search">查询</Button>
                     </div>
                 </div>
             </div>
@@ -94,7 +76,7 @@ function Exam(props) {
                 {
                     props.exam.ProtionAll && props.exam.ProtionAll.map((item, index) => {
                         // console.log(item)
-                        return <div className={styles.content_every_y} key={index}>
+                        return <div className={styles.content_every_y} key={index} onClick={() => { detalis(item) }}>
                             <div className={styles.content_every_top_y}>{item.title}</div>
                             <div className={styles.content_every_cont_y}>
                                 <div className={styles.content_every_cont_left_y}>
@@ -102,7 +84,7 @@ function Exam(props) {
                                     <div className={styles.content_every_cont_left_center_y}>{item.subject_text}</div>
                                     <div className={styles.content_every_cont_left_right_y}>{item.exam_name}</div>
                                 </div>
-                                <div className={styles.content_every_cont_right_y}>编辑</div>
+                                <div className={styles.content_every_cont_right_y} onClick={() => { compiles(item) }}>编辑</div>
                             </div>
                             <div className={styles.content_every_bottom_y}>{item.user_name} 发布</div>
                         </div>
@@ -111,9 +93,22 @@ function Exam(props) {
             </div>
         </div>
     )
+    function detalis(item) {
+        // console.log(111)
+        window.localStorage.tre = JSON.stringify(item)
+        props.history.push('examDetalis')
+        // console.log(props)
+    }
+
+    function compiles(item) {
+        // console.log(item)
+        window.localStorage.str = JSON.stringify(item)
+        props.history.push('examParticulars')
+        // console.log(props)
+    }
 }
 const mapStateToProps = state => {
-    console.log(state);
+    // console.log(state);
     return { ...state }
 }
 const mapDisaptchToProps = dispatch => {
@@ -121,12 +116,6 @@ const mapDisaptchToProps = dispatch => {
         examquest() {
             dispatch({
                 type: 'exam/questions'
-            })
-        },
-        look(payload) {
-            dispatch({
-                type: 'exam/questions',
-                payload
             })
         }
     }

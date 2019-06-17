@@ -41,7 +41,9 @@ function MenuComp() {
                 </span>
                 }
             >
-                <Menu.Item key="5">添加用户</Menu.Item>
+                <Menu.Item key="5">
+                    <Link to="/questions/Adduser">添加用户</Link>
+                </Menu.Item>
                 <Menu.Item key="6">用户展示</Menu.Item>
 
             </SubMenu>

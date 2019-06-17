@@ -1,7 +1,7 @@
 import { login } from '@/services'
 import { setToken, getToken } from '@/utils/user';
 import { routerRedux } from 'dva/router';
-import Main from '../views/Main/index'
+// import Main from '../views/Main/index'
 
 export default {
     //命名空间

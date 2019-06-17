@@ -2,7 +2,7 @@ import { Protionexam } from '@/services'
 import { Protionexamtype } from '@/services'
 import { Protionexamclass } from '@/services'
 import { ProtionAll } from '@/services'
-import { Look } from '@/services'
+
 
 export default {
     //命名空间
@@ -21,12 +21,11 @@ export default {
             let datas = yield call(Protionexamtype)
             let datass = yield call(Protionexamclass)
             let datasss = yield call(ProtionAll)
-            let datalook = yield call(Look)
+            // console.log(data)
             yield put({ type: 'exame', data: data })
             yield put({ type: 'Protionexamtype', Protionexamtype: datas })
             yield put({ type: 'Protionexamclass', Protionexamclass: datass })
             yield put({ type: 'ProtionAll', ProtionAll: datasss })
-            yield put({ type: 'Look', Look: datalook })
         },
     },
 
@@ -37,21 +36,17 @@ export default {
             return { ...state, data: payload.data.data };
         },
         Protionexamtype(state, action) {
-            console.log(action.Protionexamtype)
+            // console.log(action.Protionexamtype)
             return { ...state, Protionexamtype: action.Protionexamtype.data };
         },
         Protionexamclass(state, action) {
-            console.log(action.Protionexamclass)
+            // console.log(action.Protionexamclass)
             return { ...state, Protionexamclass: action.Protionexamclass.data };
         },
         ProtionAll(state, action) {
-            console.log(action.ProtionAll.data)
+            // console.log(action.ProtionAll.data)
             return { ...state, ProtionAll: action.ProtionAll.data };
         },
-        Look(state, action) {
-            console.log(action.Look.data)
-            return { ...state, Look: action.Look.data };
-        }
     },
 }
 
