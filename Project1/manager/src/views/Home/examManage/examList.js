@@ -16,7 +16,7 @@ class Add extends Component {
             addTry: [],
             examList: [],
             startTime: "",
-            endTime: ""
+            endTime: "",
         }
     }
 
