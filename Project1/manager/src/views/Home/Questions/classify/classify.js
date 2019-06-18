@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './classify.scss'
 import { Button, Input, Modal, Row, Col } from 'antd'
 import { connect } from 'dva';
-import './classify.scss'
+// import './classify.scss'
 
 class Classify extends Component {
     constructor(props) {
@@ -11,8 +11,7 @@ class Classify extends Component {
             visible: false,
             value: '',
             num: 0,
-            list: [],
-            obj:{}
+            list: []
         }
     }
     handleCancel = e => {
@@ -39,18 +38,17 @@ class Classify extends Component {
     }
     componentWillReceiveProps(newProps) {
         console.log(newProps)
-
         this.setState({
             list: newProps.questtion.data
         })
     }
     render() {
         return (
-            <div className={styles.wrap}>
-                <p className={styles.title}>试题分类</p>
-                <div className={styles.bottom}>
+            <div className={styles.wrap_y}>
+                <p className={styles.title_y}>试题分类</p>
+                <div className={styles.bottom_y}>
                     <div>
-                        <Button type="primary" onClick={this.typeAdd} icon="plus" size="large">
+                        <Button className={styles.addBtn_y} type="primary" onClick={this.typeAdd} icon="plus" size="large">
                             添加类型
                         </Button>
                         <Modal

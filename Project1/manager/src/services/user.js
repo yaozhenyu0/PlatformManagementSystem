@@ -50,14 +50,6 @@ export function Question() {
   });
 }
 
-//添加试题类型 (classify)
-export function QuestionAll(params) {
-  return request({
-    url: `/exam/insertQuestionsType?text=${params.text}&sort=${params.sort}`,
-    method: 'GET'
-  });
-}
-
 //所有课程类型(exam)
 export function Protionexam() {
   return request({
@@ -93,8 +85,24 @@ export function ProtionAll() {
 //获取当前用户信息 (add)/exam/insertQuestionsType
 export function UserOf() {
   return request({
-    url: '/user/userInfo',
+    url: 'user/userInfo',
     method: 'GET'
+  });
+}
+
+//添加试题类型 (classify)
+export function QuestionAll(params) {
+  return request({
+    url: `/exam/insertQuestionsType?text=${params.text}&sort=${params.sort}`,
+    method: 'GET'
+  });
+}
+//查询接口(exam)
+export function inQuires(values) {
+  return request({
+    url: `/exam/questions/condition`,
+    method: 'GET',
+    values
   });
 }
 
@@ -132,30 +140,42 @@ export function Addviewid() {
   });
 }
 
-//展示身份数据
-export function Showrank() {
+//添加用户
+export function Addus(paydata) {
   return request({
-    url: '/user/identity',
-    method: 'GET'
+    url: `/user`,
+    method: 'POST',
+    data:paydata
   });
 }
 
 //添加身份
 export function Addrank(paydata) {
-  console.log(paydata)
-  return request({
+  return request({  
     url: `/user/identity/edit?identity_text=${paydata.identity_text}`,
-    method: 'GET',
-    paydata
+    method: 'GET'
   });
 }
 
-//添加用户
-export function Addus(paydata) {
-  console.log(paydata)
-  return request({
-    url: `/user?user_name=${paydata.user_name}&user_pwd=${paydata.user_pwd}&identity_id=${paydata.identity_id}`,
-    method: 'GET',
-    paydata
+//添加api接口权限
+export function Addapi(paydata) {
+  return request({  
+    url: `/user/authorityApi/edit?api_authority_text=${paydata.api_authority_text}&api_authority_url=${paydata.api_authority_url}&api_authority_method=${paydata.api_authority_method}`,
+    method: 'GET'
+  });
+}
+
+//添加视图权限
+export function Addviewport(paydata) {
+  return request({  
+  url:`/user/authorityView/edit?view_id=${paydata.view_id}`,
+    method: 'GET'
+  });
+}
+//添加身份设定api接口权限
+export function AddSf(paydata) {
+  return request({  
+  url:'/user/setIdentityApi',
+    method: 'POST'
   });
 }

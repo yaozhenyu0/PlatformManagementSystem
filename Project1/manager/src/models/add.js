@@ -51,7 +51,7 @@ export default {
         },
     },
 
-    // 同步操作
+    // 同步操作1
     reducers: {
         //考试类型
         addS(state, action) {

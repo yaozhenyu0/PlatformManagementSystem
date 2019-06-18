@@ -1,5 +1,5 @@
-import { Question } from '@/services'//试题分类
-import { QuestionAll } from '@/services'//添加试题
+import { Question } from '@/services'
+import { QuestionAll } from '@/services'
 
 export default {
     //命名空间
@@ -7,6 +7,7 @@ export default {
 
     //模块内部的状态
     state: {
+        isLogin: 0,
         data: []
     },
 
@@ -17,16 +18,16 @@ export default {
             // console.log(data)
             yield put({
                 type: 'save',
-                data: data//返回的数据
+                data: data
             })
         },
         *questions({ payload }, { call, put }) {
             let data = yield call(QuestionAll, payload)
-            console.log(payload)
-            yield put({
-                type: 'saveadd',
-                data: data
-            })
+            console.log(data)
+            // yield put({
+            //     type: 'saveadd',
+            //     data: data
+            // })
         },
     },
 
@@ -37,8 +38,8 @@ export default {
             return { ...state, data: payload.data.data };
         },
         saveadd(state, payload) {
-            console.log(payload)
-            return { ...state, data: payload.data };
+            // console.log(payload.data.data)
+            // return { ...state, data: payload.data.data };
         },
     },
 }
