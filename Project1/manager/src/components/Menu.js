@@ -53,20 +53,24 @@ function MenuComp() {
                 key="sub3"
                 title={
                     <span>
-                        <Icon type="notification" />
+                        <Icon type="exammanage" />
                         考试管理
                 </span>
                 }
             >
-                <Menu.Item key="9">添加考试</Menu.Item>
-                <Menu.Item key="10">试卷列表</Menu.Item>
+                <Menu.Item key="9">
+                    <Link to="/exammanage/addExam">添加考试</Link>
+                </Menu.Item>
+                <Menu.Item key="10">
+                    <Link to="/exammanage/examList">试卷列表</Link>
+                </Menu.Item>
 
             </SubMenu>
             <SubMenu
                 key="sub4"
                 title={
                     <span>
-                        <Icon type="notification" />
+                        <Icon type="classmanage" />
                         班级管理
                 </span>
                 }
@@ -80,7 +84,7 @@ function MenuComp() {
                 key="sub5"
                 title={
                     <span>
-                        <Icon type="notification" />
+                        <Icon type="examinationmanage" />
                         阅卷管理
                 </span>
                 }

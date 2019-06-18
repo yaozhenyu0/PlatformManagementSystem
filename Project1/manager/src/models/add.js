@@ -3,6 +3,8 @@ import { Protion } from '@/services'
 import { ProtionType } from '@/services'
 import { UserOf } from '@/services'
 import { addTrys } from '@/services'
+import { addsExam } from '@/services'
+import { ExamList } from '@/services'
 
 export default {
     //命名空间
@@ -45,6 +47,20 @@ export default {
             // console.log(data)
             yield put({ type: 'userofS', userof: data.data })
         },
+        //添加考试
+        *addExams({ payload }, { call, put }) {
+            let data = yield call(addsExam, payload)
+            // console.log(payload)
+            // console.log(data)
+            // yield put({ type: 'userofS', userof: data.data })
+        },
+        // 试卷列表
+        *examlist({ payload }, { call, put }) {
+            let data = yield call(ExamList, payload)
+            // console.log(payload)
+            // console.log(data)
+            yield put({ type: 'examsList', examList: data })
+        },
 
         *fetch({ payload }, { call, put }) {  // eslint-disable-line
             yield put({ type: 'save' });
@@ -75,8 +91,13 @@ export default {
         },
         //添加试题
         addtrys(state, action) {
-            console.log(action)
+            // console.log(action)
             return { ...state, addtrys: action };
+        },
+        //试卷列表
+        examsList(state, action) {
+            console.log(action)
+            return { ...state, examlist: action.examList };
         },
     },
 }

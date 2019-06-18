@@ -1,0 +1,211 @@
+
+ html,body{
+     width:100%;
+     height:100%;
+ }
+.wrap_y{
+    width:100%;
+    height:100%;
+    background:#f0f0f0;
+    display: flex;
+    flex-direction: column;
+    // padding-bottom:30px; 
+  .test_y{
+      width:100%;
+      height:80px;
+      font-size: 25px;
+      padding:30px;
+      color:black;
+  }
+  .select_big{
+      width: 100%;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      padding-bottom: 30px;
+  }
+  .wrap_right_y{
+      width: 100%;
+      height: auto;
+      background: #f0f0f0;
+  }
+  .topic_y{
+      width:94%;
+      flex:1;
+      background:#fff;
+      margin-left: 3%;
+      box-sizing: border-box;
+      border-radius: 10px;
+      color:black;
+      font-size: 15px;
+      box-sizing: border-box;
+      div{
+          margin:5px;
+      }
+      .ipt_y{
+          width: 40%;
+          height: 40px;
+          margin-left: 3%;
+          margin-top: 10px;
+      }
+      .title_y{
+          line-height: 16px;
+          margin: 30px 3%;
+          font-size: 20px;
+      }
+      .theme_y{
+        //   padding:30px 0;
+        //   box-sizing: border-box;
+          font-size: 20px;
+          color:black;
+          margin: 20px 3%;
+      }
+    .message_y{
+        font-size: 20px;
+        color:black;
+        font-size: 20px;
+        margin: 29px 3%; 
+    }    
+  }
+  .btn_y{
+      width: 140px;
+      height: 46px;
+      margin-top: 20px;
+      margin-left: 3%;
+  }
+  .select_box_y{
+      margin-left: 2.8% !important;
+  }
+  .select_box_bottom_y{
+      margin-left: -110px !important;
+  }
+  .select_classify_y{
+      margin-top: 20px !important;
+  }
+  .select_classify_ke_y{
+      margin-left: 20px;
+  }
+  .examList_top_left_y{
+      position: absolute;
+      left: 249px;
+      top: 340px;
+  }
+  .examList_y{
+      width: 94%;
+      height: auto;
+      background: #fff;
+      border-radius: 6px;
+      padding-top: 1px;
+      padding-bottom: 20px;
+      margin: 40px 3%;
+  }
+  .examList_top_right_y{
+      margin-top: 30px;
+      ul{
+          width: 100%;
+          height: 56px;
+          display: flex;
+          align-items: center;
+          li:nth-child(1){
+              flex: 2.5;
+          }
+          li:nth-child(2){
+              flex: 1.5;
+          }
+          li:nth-child(3){
+              flex: 1.5;
+          }
+          li:nth-child(4){
+              flex: 2;
+          }
+          li:nth-child(5){
+              flex: 2;
+          }
+          li:nth-child(6){
+              flex: 1;
+          }
+      }
+      ol{
+          width: 100%;
+          height: 56px;
+          display: flex;
+          align-items: center;
+          li:nth-child(1){
+              flex: 2.5;
+          }
+          li:nth-child(2){
+              flex: 1.5;
+              .list_y{
+                  display: flex;
+              }
+          }
+          li:nth-child(3){
+              flex: 1.5;
+          }
+          li:nth-child(4){
+              flex: 2;
+          }
+          li:nth-child(5){
+              flex: 2;
+          }
+          li:nth-child(6){
+              flex: 1;
+          }
+      }
+  }
+}
+:global{
+    .ant-select-selection-selected-value{
+        line-height: 12px !important;
+    }
+     .add__wrap_y___LGa2b{
+         width: 100%;
+         height: 100%;
+     }
+     .ant-layout-content,.add__wrap_y___LGa2b{
+         height: 100%;
+     }
+     .ant-select-selection__rendered{
+        display: flex;
+     }
+     .for-container{
+         width: 80%;
+         height: 180px;
+         margin-left: 3% !important;
+     }
+     .addExam__title_y___39x3j{
+         padding-top: 30px;
+          margin: 30px 3%;
+          font-size: 16px;
+     }
+     .ant-input-number-handler-wrap{
+        margin-top: -1px !important;
+        margin-right: -1px !important;
+     }
+     .ant-input-number-input{
+         margin-top: -5px !important;
+     }
+     .addExam__wrap_right_y___2gsEd{
+         padding-bottom: 30px;
+     }
+     .addExam__topic_y___3mtnI{
+         display: flex !important;
+         align-items: center !important;
+     }
+     .examList__select_classify_y___O2lHx{
+        //  line-height: 100px !important;
+        position: absolute !important;
+        top: 168px !important;
+        left: 290px;
+     }
+     .examList__select_box_y___80voS{
+         
+     }
+     .ant-form-item-control-wrapper{
+         margin-left: 100px !important;
+     }
+     .ant-tabs-nav-animated{
+        float: right;
+     }
+     
+}

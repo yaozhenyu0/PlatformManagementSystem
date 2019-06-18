@@ -11,6 +11,8 @@ import Particulars from '../Home/Questions/examParticulars';
 import Detalis from '../Home/Questions/examDetalis';
 // import AddUesr from '../Home/UserManagement/addUesr';
 import UserDisplay from '../Home/UserManagement/userDisplay';
+import ExamManage from '../Home/examManage/addExam';
+import ExamList from '../Home/examManage/examList';
 
 const { Content, Sider } = Layout;
 // console.log(Add)
@@ -44,6 +46,9 @@ function IndexPage(props) {
                     {/* <Route path='/UserManagement/addUesr' component={AddUesr}></Route> */}
                     {/* 用户展示 */}
                     <Route path='/UserManagement/userDisplay' component={UserDisplay}></Route>
+                    {/* 添加考试 */}
+                    <Route path='/examManage/addExam' component={ExamManage}></Route>
+                    <Route path='/examManage/examList' component={ExamList}></Route>
                 </Switch>
             </Content>
         </Layout>

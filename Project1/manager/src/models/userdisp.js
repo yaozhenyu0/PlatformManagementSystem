@@ -17,18 +17,16 @@ export default {
         *options({ payload }, { call, put }) {
             //用户数据
             let data = yield call(UserDisp, payload);
-            // console.log(data);
+            console.log(data);
             yield put({ type: 'userdisp', data: data.data })
         },
 
         *optionsData({ payload }, { call, put }) {
             //身份数据
             let data = yield call(UserDispData, payload);
-            // console.log(data);
+            console.log(data);
             yield put({ type: 'userdispData', data: data.data })
         },
-
-
         *apiPorts({ payload }, { call, put }) {
             //api接口权限
             let data = yield call(ApiData, payload);

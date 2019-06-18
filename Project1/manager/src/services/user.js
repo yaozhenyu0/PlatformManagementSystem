@@ -99,8 +99,9 @@ export function QuestionAll(params) {
 }
 //查询接口(exam)
 export function inQuires(values) {
+  console.log(values)
   return request({
-    url: `/exam/questions/condition`,
+    url: `/exam/questions/condition?questions_type_id=${values.questions_type_id}&subject_id=${values.subject_id}&exam_id=${values.exam_id}`,
     method: 'GET',
     values
   });
@@ -111,35 +112,35 @@ export function inQuires(values) {
 // 用户展示
 export function UserDisp() {
   return request({
-    url: `/user/user`,
+    url: `/ user / user`,
     method: 'GET',
   });
 }
 //身份数据
 export function UserDispData() {
   return request({
-    url: `/user/identity`,
+    url: `/ user / identity`,
     method: 'GET',
   });
 }
 //api接口权限
 export function ApiData() {
   return request({
-    url: `/user/api_authority`,
+    url: `/ user / api_authority`,
     method: 'GET',
   });
 }
 //身份和api接口关系
 export function IdenApi() {
   return request({
-    url: `/user/identity_api_authority_relation`,
+    url: `/ user / identity_api_authority_relation`,
     method: 'GET',
   });
 }
 //视图接口权限
 export function viewData() {
   return request({
-    url: `/user/view_authority`,
+    url: `/ user / view_authority`,
     method: 'GET',
   });
 }
@@ -148,5 +149,22 @@ export function viewIden() {
   return request({
     url: `/user/identity_view_authority_relation`,
     method: 'GET',
+  });
+}
+
+//添加考试
+export function addsExam(payload) {
+  return request({
+    url: `/exam/exam`,
+    method: 'POST',
+    payload
+  });
+}
+//试卷列表
+export function ExamList(payload) {
+  return request({
+    url: `/exam/exam`,
+    method: 'GET',
+    payload
   });
 }

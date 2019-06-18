@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import styles from './addUser.scss';
+import styles from './userDisplay.scss';
 import { Tabs, Table } from 'antd';
 import Editor from 'for-editor';
-import './addUser.scss';
+import './userDisplay.scss';
 import { connect } from 'dva';
 import 'antd/dist/antd.css'
 
@@ -20,7 +20,7 @@ class UserDisplay extends Component {
         }
     }
     componentDidMount() {
-        console.log(this.props.userShow)
+        // console.log(this.props.userShow)
         this.props.userShow()
         this.props.idenData()
         this.props.apiPort()
@@ -29,7 +29,7 @@ class UserDisplay extends Component {
         this.props.idenView()
     }
     componentWillReceiveProps(newProps) {
-        console.log(newProps)
+        // console.log(newProps)
         this.setState({
             userData: newProps.data,  //用户数据
             idenData: newProps.datas,   //用户管理

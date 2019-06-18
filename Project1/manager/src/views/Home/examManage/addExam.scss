@@ -1,0 +1,113 @@
+
+ html,body{
+     width:100%;
+     height:100%;
+ }
+.wrap_y{
+    width:100%;
+    height:100%;
+    background:#f0f0f0;
+    display: flex;
+    flex-direction: column;
+    // padding-bottom:30px; 
+  .test_y{
+      width:100%;
+      height:80px;
+      font-size: 25px;
+      padding:30px;
+      color:black;
+  }
+  .wrap_right_y{
+      width: 100%;
+      height: auto;
+      background: #f0f0f0;
+  }
+  .topic_y{
+      width:94%;
+      flex:1;
+      background:#fff;
+      margin-left: 3%;
+      box-sizing: border-box;
+      border-radius: 10px;
+      color:black;
+      font-size: 15px;
+      box-sizing: border-box;
+      div{
+          margin:5px;
+      }
+      .ipt_y{
+          width: 40%;
+          height: 40px;
+          margin-left: 3%;
+          margin-top: 10px;
+      }
+      .title_y{
+          line-height: 16px;
+          margin: 30px 3%;
+          font-size: 20px;
+      }
+      .theme_y{
+        //   padding:30px 0;
+        //   box-sizing: border-box;
+          font-size: 20px;
+          color:black;
+          margin: 20px 3%;
+      }
+    .message_y{
+        font-size: 20px;
+        color:black;
+        font-size: 20px;
+        margin: 29px 3%; 
+    }    
+  }
+  .btn_y{
+      width: 140px;
+      height: 46px;
+      margin-top: 20px;
+      margin-left: 3%;
+  }
+  .select_box_y{
+      margin-left: 2.8% !important;
+  }
+  .select_classify_y{
+      margin-top: 20px !important;
+  }
+}
+:global{
+    .ant-select-selection-selected-value{
+        line-height: 12px !important;
+    }
+     .add__wrap_y___LGa2b{
+         width: 100%;
+         height: 100%;
+     }
+     .ant-layout-content,.add__wrap_y___LGa2b{
+         height: 100%;
+     }
+     .ant-select-selection__rendered{
+        display: flex;
+     }
+     .for-container{
+         width: 80%;
+         height: 180px;
+         margin-left: 3% !important;
+     }
+     .addExam__title_y___39x3j{
+         padding-top: 30px;
+          margin: 30px 3%;
+          font-size: 16px;
+     }
+     .ant-input-number-handler-wrap{
+        margin-top: -1px !important;
+        margin-right: -1px !important;
+     }
+     .ant-input-number-input{
+         margin-top: -5px !important;
+     }
+     .addExam__wrap_right_y___2gsEd{
+         padding-bottom: 30px;
+     }
+    //  .ant-input-number{
+    //      margin-top: 3px !important;
+    //  }
+}
