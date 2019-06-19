@@ -15,7 +15,7 @@ import ExamManage from '../Home/examManage/addExam';
 import ExamList from '../Home/examManage/examList';
 import ExamChildren from '../Home/examManage/children';
 import createExam from '../Home/examManage/createExam';
-import AddClass from '../Home/classmanage/addClass';
+import AddsClass from '../Home/classmanage/addClass';
 
 const { Content, Sider } = Layout;
 // console.log(Add)
@@ -58,7 +58,7 @@ function IndexPage(props) {
                     {/* 试题列表详情 */}
                     <Route path='/examManage/children' component={ExamChildren}></Route>
                     {/* 添加班级 */}
-                    <Route path='/classmanage/addClass' component={AddClass}></Route>
+                    <Route path='/classmanage/addClass' component={AddsClass}></Route>
                 </Switch>
             </Content>
         </Layout>

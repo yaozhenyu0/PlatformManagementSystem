@@ -78,7 +78,9 @@ function MenuComp(props) {
                 }
             >
                 <Menu.Item key="13">班级管理</Menu.Item>
-                <Link to="/classmanage/addClass">教室管理</Link>
+                <Menu.Item key="14">
+                    <Link to="/classmanage/addClass">教室管理</Link>
+                </Menu.Item>
                 <Menu.Item key="15">学生管理</Menu.Item>
 
             </SubMenu>
