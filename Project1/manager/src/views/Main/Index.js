@@ -10,6 +10,7 @@ import Exam from '../Home/Questions/exam/exam';
 import Particulars from '../Home/Questions/examParticulars/examParticulars';
 import Detalis from '../Home/Questions/examDetalis/examDetalis';
 import Adduser from '../Home/Questions/addUser/addUser';
+import Classmanage from '../Home/Questions/classmanage/classmanage';
 
 const { Content, Sider } = Layout;
 function IndexPage(props) {
@@ -33,6 +34,7 @@ function IndexPage(props) {
                     <Route path='/questions/examParticulars' component={Particulars}></Route>
                     <Route path='/questions/examDetalis' component={Detalis}></Route>
                     <Route path='/questions/Adduser' component={Adduser}></Route>
+                    <Route path='/questions/Classmanage' component={Classmanage}></Route>
                 </Switch>
 
 

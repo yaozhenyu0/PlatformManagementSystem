@@ -25,11 +25,26 @@ function UserIndex(props){
             message.info(props.rankdata)
         }
     },[props.b])
-    useEffect(()=>{//添加接口权限
+    useEffect(()=>{//添加api接口权限
         if(props.addportdata){
             message.info(props.addportdata)
         }
     },[props.c])
+    useEffect(()=>{//添加视图接口权限
+        if(props.dataval){
+            message.info(props.dataval)
+        }
+    },[props.d]) 
+    useEffect(()=>{//添加视图接口权限
+        if(props.contval){
+            message.info(props.contval)
+        }
+    },[props.f])
+    useEffect(()=>{//给身份设定视图权限
+        if(props.data){
+            message.info(props.data)
+        }
+    },[props.g])
     //form表单提交按钮
     let handleSubmitOne=e=>{
         
@@ -45,7 +60,22 @@ function UserIndex(props){
              props.Edituserof(obj) 
         });
     }
-     //添加身份
+    //更新用户信息
+    let HandEdit=e=>{
+        e.preventDefault();
+//     props.form.validateFields((err, values) => {
+//         console.log(values)
+//         let obj={}
+//         obj.username=JSON.parse(values.userid_top)
+//         obj.pwd=JSON.parse(values.pwd)
+//         obj.user_Child=JSON.parse(values.user_Child)
+//         obj.userid_Child=JSON.parse(values.userid_Child)
+//         console.log(obj)
+//          props.Editedit(obj) 
+//     });
+  }
+
+     //添加身
     let addiDentity=(e)=>{
         e.preventDefault();
         props.form.validateFields((err, values) => {
@@ -70,8 +100,7 @@ function UserIndex(props){
         e.preventDefault();
       props.form.validateFields((err,values)=>{
        let val=JSON.parse(values.view)
-       console.log(val.view_authority_text)
-       props.Editviewport({view_id:values.view,view_authority_text:val.view_authority_text})
+       props.Editviewport({view_authority_text:val.view_authority_text,view_id:val.view_id})
    })
 }
 
@@ -79,9 +108,20 @@ function UserIndex(props){
     let handlesf=(e)=>{
         e.preventDefault();
         props.form.validateFields((err,values)=>{
-            let identity=JSON.parse(values.Api_port)
-            let authority=JSON.parse(values.identity)
-            props.Editsf({identity_id:identity,api_authority_id:authority})
+            let obj={}
+            obj.identity=JSON.parse(values.Api_port)
+            obj.authority=JSON.parse(values.identity)
+            props.Editdatas(obj)
+        })
+    }
+    //给身份设定视图权限
+    let handleLast=(e)=>{
+        e.preventDefault();
+        props.form.validateFields((err,values)=>{
+            let obj={}
+            obj.view=JSON.parse(values.View_dentity)
+            obj.ids=JSON.parse(values.id_dentity)
+            props.Editlast(obj)
         })
     }
     //添加用户的change事件
@@ -125,7 +165,7 @@ function UserIndex(props){
                                 <Select style={{ width: 140 }}>
                                     {
                                         props.datasid&&props.datasid.map((item,index)=>{
-                                        return <Option key={item.user_id} value={item.user_id}>{item.user_name}</Option>
+                                        return <Option key={item.user_id} value={JSON.stringify(item)}>{item.user_name}</Option>
                                         })
                                     }
                                 </Select>
@@ -153,13 +193,13 @@ function UserIndex(props){
                                 <Select style={{ width: 140 }}>
                                     {
                                        props.datas&&props.datas.map((item,index)=>{
-                                        return <Option key={item.identity_id} value={item.identity_id}>{item.identity_text}</Option>
+                                        return <Option key={item.identity_id} value={JSON.stringify(item)}>{item.identity_text}</Option>
                                         })
                                     }
                                 </Select>
                             )}
                         </Form.Item>
-                        <Button type="primary" htmlType="submit">
+                        <Button type="primary" htmlType="submit" onClick={HandEdit}>
                             确定
                         </Button>
                         <Button style={{marginLeft:10 }} onClick={handleReset} >
@@ -295,7 +335,7 @@ function UserIndex(props){
             {/* 第五个 */}
             <div className={styles.cont_Item}>
                 <div className={styles.top}> 
-                    <Button className={styles.color}>添加身份设置api接口权限</Button>
+                    <Button className={styles.color}>给身份设置api接口权限</Button>
                 </div>
                 <div className={styles.upUser}>
                     <Form.Item>
@@ -340,7 +380,7 @@ function UserIndex(props){
             {/* 第六个 */}
             <div className={styles.cont_Item}>
                 <div className={styles.top}> 
-                        <Button  className={styles.color}>添加身份视图接口权限</Button>
+                        <Button  className={styles.color}>给身份设置视图权限</Button>
                 </div>
                 <div className={styles.upUser}>
                     <Form.Item>
@@ -352,7 +392,7 @@ function UserIndex(props){
 
                                     {
                                        props.datas&&props.datas.map((item,index)=>{
-                                        return <Option key={item.identity_id} value={item.identity_id}>{item.identity_text}</Option>
+                                        return <Option key={item.identity_id} value={JSON.stringify(item)}>{item.identity_text}</Option>
                                         })
                                     }
                         </Select>
@@ -366,13 +406,13 @@ function UserIndex(props){
                         <Select style={{ width: 140 }}>
                             {
                                 props.dataviewid&&props.dataviewid.map((item,index)=>{
-                                    return <Option key={item.identity_view_authority_relation_id} value={item.identity_view_authority_relation_id}>{item.view_authority_text}</Option>
+                                    return <Option key={item.identity_view_authority_relation_id} value={JSON.stringify(item)}>{item.view_authority_text}</Option>
                                 })
                             }
                         </Select>
                         )}
                     </Form.Item>
-                    <Button type="primary" htmlType="submit">
+                    <Button type="primary" htmlType="submit" onClick={handleLast}>
                     确定
                     </Button>
                     <Button style={{marginLeft:10 }} onClick={handleReset} >
@@ -445,7 +485,6 @@ UserIndex.defaultProps={
       },
       //添加api接口权限
       Editapiport(payload){
-          console.log(payload)
           dispatch({
               type:"usermanagement/addapiport",
               payload
@@ -453,19 +492,33 @@ UserIndex.defaultProps={
       },
       //添加视图权限
       Editviewport(payload){
-          console.log(payload.view_authority_text)
         dispatch({
             type:"usermanagement/viewport",
-            payload:payload.view_authority_text
+            payload
         })
     },
     //添加身份设定api接口权限
-    Editsf(payload){
+    Editdatas(payload){
       dispatch({
-          type:"usermanagement/addsf",
+          type:"usermanagement/addsfapi",
           payload
       })
-  }
+  },
+  //给身份设定视图权限
+  Editlast(payload){
+    dispatch({
+        type:"usermanagement/addlast",
+        payload
+    })
+},
+//更改用户信息
+   Editedit(payload){
+       console.log(payload)
+        dispatch({
+            type:"usermanagement/addlast",
+            payload
+        })
+    }
  }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Form.create()(UserIndex));

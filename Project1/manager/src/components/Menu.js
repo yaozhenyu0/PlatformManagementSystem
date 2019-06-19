@@ -69,7 +69,9 @@ function MenuComp() {
                 </span>
                 }
             >
-                <Menu.Item key="13">班级管理</Menu.Item>
+                <Menu.Item key="13">
+                    <Link to="/questions/Classmanage">班级管理</Link>
+                </Menu.Item>
                 <Menu.Item key="14">教室管理</Menu.Item>
                 <Menu.Item key="15">学生管理</Menu.Item>
 

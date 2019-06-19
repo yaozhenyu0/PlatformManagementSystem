@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
 import styles from './add.scss';
 import { Input, Select, Button, Form } from 'antd';
 import Editor from 'for-editor';
 import './add.scss';
 import { connect } from 'dva';
-// import { Divider } from 'antd';
 
 class Add extends Component {
     constructor() {
@@ -28,7 +26,6 @@ class Add extends Component {
         this.props.protion()
         this.props.protiontype()
         this.props.userof()
-        // let eate = JSON.parse(window.localStorage.str)
     }
     componentWillReceiveProps(newProps) {
         // console.log(newProps)

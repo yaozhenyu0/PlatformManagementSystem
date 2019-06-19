@@ -15,6 +15,7 @@ app.model(require('./models/add').default);
 app.model(require('./models/classify').default);
 app.model(require('./models/exam').default);
 app.model(require('./models/usermanagement').default);
+app.model(require('./models/Classmanagement').default);
 
 // 4. Router 
 app.router(require('./router').default);

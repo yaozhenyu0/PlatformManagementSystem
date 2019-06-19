@@ -6,7 +6,10 @@ import { Addus } from '@/services'
 import { Addrank } from '@/services'
 import { Addapi } from '@/services'
 import { Addviewport } from '@/services'
-import { AddSf } from '@/services'
+import { AddSfapi } from '@/services'
+import { AddLast } from '@/services'
+// import { Editedit } from '@/services'
+
 export default {
     //命名空间
     namespace: 'usermanagement',
@@ -44,18 +47,26 @@ export default {
         },
         *addapiport({ payload }, { call, put }) {//添加api接口权限
             let addaport=yield call(Addapi,payload)
-            console.log(addaport)
-            yield put({type:'addApiport',addaport:addaport.code===1?'接口权限添加成功':'接口权限添加失败'})
+            yield put({type:'addApiport',addaport:addaport.code===1?'api接口权限添加成功':'api接口权限添加失败'})
         },
          *viewport({ payload }, { call, put }) {//添加视图权限
-            console.log(payload)
-            let tt=yield call(Addviewport,payload)
-            console.log(tt)
+            let addviewdata=yield call(Addviewport,payload)
+            yield put({type:'viewda',addviewdata:addviewdata.code===1?'视图接口权限添加成功':'视图权限重复'})
         },
-        *addsf({ payload }, { call, put }) {//添加身份设定api接口权限
-            console.log(payload)
-            let sfdata=yield call(AddSf,payload)
-        }
+        *addsfapi({ payload }, { call, put }) {//添加身份设定api接口权限
+            let sfdata=yield call(AddSfapi,payload)
+            yield put({type:'addcont',sfdata:sfdata.code===1?'身份权限添加成功':'身份权限重复'})
+        },
+        *addlast({ payload }, { call, put }) {//添加身份设定api接口权限
+            let lastdata=yield call(AddLast,payload)
+            console.log(lastdata.code)
+            yield put({type:'lastcont',lastdata:lastdata.code===1?'权限添加成功':'身份权限重复'})
+        },
+        // *addlast({ payload }, { call, put }) {//更改用户信息
+        //     let editval=yield call(Editedit,payload)
+        //     console.log(editval)
+        //     // yield put({type:'lastcont',lastdata:lastdata.code===1?'权限添加成功':'身份权限重复'})
+        // }
     },
 
     // 同步操作
@@ -81,6 +92,15 @@ export default {
         },
         addApiport(state, action) {
             return { ...state, addportdata: action.addaport,c:Math.floor(Math.random()*10)};
+        },
+        viewda(state, action) {
+            return { ...state, dataval: action.addviewdata,d:Math.floor(Math.random()*10)};
+        },
+        addcont(state, action) {
+            return { ...state, contval: action.sfdata,f:Math.floor(Math.random()*10)};
+        },
+        lastcont(state, action) {
+            return { ...state, data: action.lastdata,g:Math.floor(Math.random()*10)};
         }
     }
 }

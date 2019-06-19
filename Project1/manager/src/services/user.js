@@ -82,7 +82,7 @@ export function ProtionAll() {
   });
 }
 
-//获取当前用户信息 (add)/exam/insertQuestionsType
+//获取当前用户信息 (add)
 export function UserOf() {
   return request({
     url: 'user/userInfo',
@@ -168,14 +168,56 @@ export function Addapi(paydata) {
 //添加视图权限
 export function Addviewport(paydata) {
   return request({  
-  url:`/user/authorityView/edit?view_id=${paydata.view_id}`,
+  url:`/user/authorityView/edit?view_id=${paydata.view_id}&view_authority_text=${paydata.view_authority_text}`,
     method: 'GET'
   });
 }
 //添加身份设定api接口权限
-export function AddSf(paydata) {
+export function AddSfapi(paydata) {
   return request({  
   url:'/user/setIdentityApi',
+    method: 'POST',
+    data:paydata
+  });
+}
+//给身份设定视图权限
+export function AddLast(paydata) {
+  return request({  
+  url:'/user/setIdentityView',
     method: 'POST'
+  });
+}
+//更改用户信息
+// export function Editdata(paydata) {
+//   return request({  
+//   url:'/user/user',
+//     method: 'PUT'
+//   });
+// }
+
+//////////////////3.班级管理//////////////////////
+
+
+//班级管理数据
+export function Classdata(paydata) {
+  return request({  
+  url:'/manger/grade',
+    method: 'GET'
+  });
+}
+//删除班级接口
+export function Classdel(paydata) {
+  return request({  
+  url:'/manger/grade/delete',
+    method: 'DELETE',
+    data:paydata
+  });
+}
+//添加班级接口
+export function Classadd(paydata) {
+  return request({  
+  url:'/manger/grade',
+    method: 'POST',
+    data:paydata
   });
 }
