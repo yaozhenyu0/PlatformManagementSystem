@@ -6,7 +6,7 @@ import Editor from 'for-editor';
 import './addExam.scss';
 import { connect } from 'dva';
 
-class Add extends Component {
+class AddExam extends Component {
     constructor() {
         super()
         this.state = {
@@ -82,7 +82,11 @@ class Add extends Component {
         this.props.userof()
     }
     componentWillReceiveProps(newProps) {
-        // console.log(newProps)
+        console.log(newProps.addSexamS)
+        if (newProps.addSexamS) {
+            console.log(newProps.addSexamS)
+            window.localStorage.examlist = JSON.stringify(newProps.addSexamS)
+        }
         this.setState({
             //考试类型
             addlist: newProps.addlist,
@@ -101,11 +105,13 @@ class Add extends Component {
             // console.log(values)
             values.start_time = this.state["startTime"]
             values.end_time = this.state["endTime"]
-            console.log(values)
+            // console.log(values)
             let params = values
             if (!err) {
-                this.props.addsExam(params)
-                console.log(params)
+                window.localStorage.list = JSON.stringify(params)
+                // this.props.addsExam(params)
+                // console.log(params)
+                this.props.history.push(`createExam`)
             }
         })
     }
@@ -258,4 +264,4 @@ const mapDisaptchToProps = dispatch => {
 
     }
 }
-export default connect(mapStateToProps, mapDisaptchToProps)(Form.create()(Add))
+export default connect(mapStateToProps, mapDisaptchToProps)(Form.create()(AddExam))

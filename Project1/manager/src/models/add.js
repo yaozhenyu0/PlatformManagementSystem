@@ -52,8 +52,8 @@ export default {
         *addExams({ payload }, { call, put }) {
             let data = yield call(addsExam, payload)
             console.log(payload)
-            // console.log(data)
-            // yield put({ type: 'addSexams', addSexam: data.data })
+            console.log(data)
+            yield put({ type: 'addSexams', addSexam: data.data })
         },
         // 试卷列表
         *examlist({ payload }, { call, put }) {
@@ -105,7 +105,7 @@ export default {
         //添加考试
         addSexams(state, action) {
             // console.log(action)
-            return { ...state, addtrys: action.addSexam };
+            return { ...state, addSexamS: action.addSexam };
         },
         //试卷列表
         examsList(state, action) {

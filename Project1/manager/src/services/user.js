@@ -154,11 +154,11 @@ export function viewIden() {
 
 //添加考试
 export function addsExam(payload) {
-  console.log(payload)
+  // console.log(payload)
   return request({
-    url: `/exam/exam?subject_id=${payload.subject_id}&exam_id=${payload.exam_id}&title=${payload.title}&number=${payload.number}&start_time=${payload.start_time}&end_time=${payload.end_time}`,
+    url: `/exam/exam`,
     method: 'POST',
-    payload
+    data: payload
   });
 }
 //试卷列表
