@@ -170,4 +170,10 @@
         display: flex;
         align-items: center;
     }
+    .ant-radio-button-wrapper:first-child {
+        border-left: 0;
+    }
+    .ant-radio-button-wrapper{
+        
+    }
   }

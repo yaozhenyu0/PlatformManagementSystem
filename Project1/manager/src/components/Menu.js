@@ -2,8 +2,10 @@ import React from 'react'
 import { Menu, Icon } from 'antd'
 import { Link } from 'dva/router';
 const { SubMenu } = Menu;
+// import { injectIntl } from 'react-intl'
 
-function MenuComp() {
+function MenuComp(props) {
+    // console.log(props)
     return (
         <Menu
             mode="inline"
@@ -16,7 +18,7 @@ function MenuComp() {
                 title={
                     <span>
                         <Icon type="user" />
-
+                        {/* {props.intl.formatMessage({ id: 'router.questions' })} */}
                         试题管理
                 </span>
                 }

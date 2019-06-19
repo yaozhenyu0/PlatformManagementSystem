@@ -105,7 +105,7 @@ class Add extends Component {
             let params = values
             if (!err) {
                 this.props.addsExam(params)
-                // console.log(params)
+                console.log(params)
             }
         })
     }
@@ -128,7 +128,7 @@ class Add extends Component {
                             <div className={styles.title_y}>*试卷名称：</div>
                             <Form.Item>
                                 {
-                                    getFieldDecorator('tite', {
+                                    getFieldDecorator('title', {
                                     })(
                                         <Input className={styles.ipt_y} />
                                     )
@@ -240,7 +240,7 @@ const mapDisaptchToProps = dispatch => {
         },
         //添加考试
         addsExam(payload) {
-            console.log(payload)
+            // console.log(payload)
             dispatch({
                 //命名空间+异步操作名字
                 type: 'add/addExams',

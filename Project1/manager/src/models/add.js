@@ -5,6 +5,7 @@ import { UserOf } from '@/services'
 import { addTrys } from '@/services'
 import { addsExam } from '@/services'
 import { ExamList } from '@/services'
+import { ExamChild } from '@/services'
 
 export default {
     //命名空间
@@ -50,9 +51,9 @@ export default {
         //添加考试
         *addExams({ payload }, { call, put }) {
             let data = yield call(addsExam, payload)
-            // console.log(payload)
+            console.log(payload)
             // console.log(data)
-            // yield put({ type: 'userofS', userof: data.data })
+            // yield put({ type: 'addSexams', addSexam: data.data })
         },
         // 试卷列表
         *examlist({ payload }, { call, put }) {
@@ -60,6 +61,13 @@ export default {
             // console.log(payload)
             // console.log(data)
             yield put({ type: 'examsList', examList: data })
+        },
+        // 试题详情
+        *examsChild({ values }, { call, put }) {
+            let data = yield call(ExamChild, values)
+            console.log(values)
+            console.log(data)
+            yield put({ type: 'examChilds', examsChilds: data })
         },
 
         *fetch({ payload }, { call, put }) {  // eslint-disable-line
@@ -94,10 +102,20 @@ export default {
             // console.log(action)
             return { ...state, addtrys: action };
         },
+        //添加考试
+        addSexams(state, action) {
+            // console.log(action)
+            return { ...state, addtrys: action.addSexam };
+        },
         //试卷列表
         examsList(state, action) {
-            console.log(action)
+            // console.log(action)
             return { ...state, examlist: action.examList };
+        },
+        //试ti详情
+        examChilds(state, action) {
+            // console.log(action)
+            return { ...state, examchildlist: action.examsChilds.data };
         },
     },
 }

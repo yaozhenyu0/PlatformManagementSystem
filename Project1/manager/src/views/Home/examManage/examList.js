@@ -24,14 +24,15 @@ class Add extends Component {
         this.props.questions()
         this.props.protion()
         this.props.examLists()
-        // this.props.userof()
     }
     componentWillReceiveProps(newProps) {
         if (newProps.examlist) {
-            console.log(newProps.examlist)
+            // console.log()
             this.setState({
                 // 试卷列表
-                examList: newProps.examlist
+                examList: newProps.examlist,
+                endTime: newProps.examlist.exam[0].end_time * 1,
+                startTime: newProps.examlist.exam[0].start_time * 1
             })
         }
         this.setState({
@@ -42,15 +43,19 @@ class Add extends Component {
         })
     }
 
-    callback = (key) => {
-        console.log(key);
+    detalise = (item) => {
+        console.log(item)
+        console.log(this.props);
+        // window.localStorage.str = JSON.stringify(item)
+        this.props.history.push(`children?id=${item}`)
     }
 
 
     handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
-            console.log(values)
+            // console.log(values)
+            // values.exam_exam_id= this.state.exam_exam_id
             let params = values
             if (!err) {
                 // this.props.addsExam(params)
@@ -65,8 +70,8 @@ class Add extends Component {
 
         const { TabPane } = Tabs;
 
-        let { addlist, protion, examList } = this.state
-        console.log(examList)
+        let { addlist, protion, examList, startTime, endTime } = this.state
+        // console.log(examList)
         return (
             <div className={styles.wrap_y}>
                 <div className={styles.wrap_right_y}>
@@ -114,7 +119,7 @@ class Add extends Component {
                         <div className={styles.examList_top_left_y}>试卷列表</div>
                         <div className={styles.examList_top_right_y}>
                             <Tabs onChange={this.callback} type="card">
-                                <TabPane tab="Tab 1" key="1">
+                                <TabPane tab="全部" key="1">
                                     <ul>
                                         <li>判卷信息</li>
                                         <li>班级</li>
@@ -126,7 +131,7 @@ class Add extends Component {
                                     {
                                         examList.exam && examList.exam.map((item, i) => {
                                             console.log(item)
-                                            return <ol>
+                                            return <ol key={i}>
                                                 <li>
                                                     <div>{item.title}</div>
                                                     <div>0{(item.end_time - item.start_time) / 1000 / 60 / 60}:00:00</div>
@@ -145,19 +150,19 @@ class Add extends Component {
 
                                                 </li>
                                                 <li>{item.user_name}</li>
-                                                <li>{new Date(item.start_time).toLocaleString()}</li>
-                                                <li>{new Date(item.end_time).toLocaleString()}</li>
-                                                <li onChange={this.details} >详情</li>
+                                                <li>{new Date(startTime).toLocaleString()}</li>
+                                                <li>{new Date(endTime).toLocaleString()}</li>
+                                                <li className={styles.goToChild_y} onClick={this.detalise.bind(this, item.exam_exam_id)} >详情</li>
                                             </ol>
                                         })
                                     }
 
 
                                 </TabPane>
-                                <TabPane tab="Tab 2" key="2">
+                                <TabPane tab="进行中" key="2">
                                     Content of Tab Pane 2
                                 </TabPane>
-                                <TabPane tab="Tab 3" key="3">
+                                <TabPane tab="已结束" key="3">
                                     Content of Tab Pane 3
                                 </TabPane>
                             </Tabs>,
@@ -197,14 +202,6 @@ const mapDisaptchToProps = dispatch => {
 
             })
         },
-        // //试题类型
-        // protiontype() {
-        //     dispatch({
-        //         //命名空间+异步操作名字
-        //         type: 'add/protiontype',
-
-        //     })
-        // },
         // //添加考试
         // addsExam(payload) {
         //     console.log(payload)

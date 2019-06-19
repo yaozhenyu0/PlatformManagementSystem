@@ -132,9 +132,11 @@
           align-items: center;
           li:nth-child(1){
               flex: 2.5;
+              font-size: 12px;
           }
           li:nth-child(2){
               flex: 1.5;
+              font-size: 12px;
               .list_y{
                   display: flex;
               }
@@ -144,12 +146,15 @@
           }
           li:nth-child(4){
               flex: 2;
+              font-size: 12px;
           }
           li:nth-child(5){
               flex: 2;
+              font-size: 12px;
           }
           li:nth-child(6){
               flex: 1;
+              color: rgb(43, 43, 214)
           }
       }
   }
