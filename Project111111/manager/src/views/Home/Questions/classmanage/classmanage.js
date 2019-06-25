@@ -10,7 +10,8 @@ class Classmanage extends Component {
             classdata:[],
             loading: false,
             visible: false,
-            visible1:false
+            visible1:false,
+            val:''
         }
     }
     
@@ -21,16 +22,12 @@ class Classmanage extends Component {
       };
       showModaledit=(e)=>{//点击修改
         this.setState({
-            visible1: true,
+            visible1: true
           });
-          console.log(e)
-          
-          this.setState({
-            user_nameedit:e.grade_name
-          })
-          console.log(this.user_nameedit)
+         
           this.props.form.validateFields((err, values) => {
-            console.log(values)
+            console.log(e)
+            this.props.Classedit(e)
         })
       }
       handleOk = () => {//点击提交

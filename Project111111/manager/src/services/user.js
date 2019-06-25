@@ -297,7 +297,7 @@ export function Classadd(paydata) {
 ///修改班级接口
 export function Classedit(paydata) {
   return request({  
-  url:'manger/grade/update',
+  url:'/manger/grade/update',
     method: 'PUT',
     data:paydata
   });

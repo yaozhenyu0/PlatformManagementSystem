@@ -77,14 +77,13 @@ function IndexPage(props) {
     };
   
    let handleOk = e => {
-      setvisible(true)
+      setvisible(false)
     };
   
     let handleCancel = e => {
       setvisible(false)
     };
     let inpChange=e=>{
-        console.log(e)
         let files=e.target.files
         console.log(files)
         var reader=new FileReader()
