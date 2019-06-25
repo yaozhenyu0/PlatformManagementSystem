@@ -28,7 +28,7 @@ export default {
         },
         *questionsedit({ payload }, { call, put }) {//添加班级
             let editdata=yield call(Classedit,payload)
-            // yield put({type:'addclass',adddata:adddata.code===1?'修改班级成功':'修改班级失败'})
+            yield put({type:'addclass',adddata:editdata.code===1?'修改班级成功':'修改班级失败'})
         },
     },
     // 同步操作
@@ -41,7 +41,7 @@ export default {
         },
         addclass(state, payload) {
              console.log(payload)
-            return { ...state, adddata: payload.addval };
+            return { ...state, adddata: payload.adddata };
         },
     },
 }
