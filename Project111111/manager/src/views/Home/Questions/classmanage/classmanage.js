@@ -67,11 +67,10 @@ class Classmanage extends Component {
 /////
     componentDidMount() {
         this.props.Classdata()
-        // this.props.Classadd()
     }
     componentWillReceiveProps(newProps) {
         console.log(newProps)
-        this.setState({
+        this.setState({ 
             classdata:newProps.data
         })
     }

@@ -2,10 +2,8 @@ import React from 'react'
 import { Menu, Icon } from 'antd'
 import { Link } from 'dva/router';
 const { SubMenu } = Menu;
-// import { injectIntl } from 'react-intl'
 
 function MenuComp(props) {
-    // console.log(props)
     return (
         <Menu
             mode="inline"
